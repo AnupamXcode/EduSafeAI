@@ -9,7 +9,7 @@ import sys
 import numpy as np
 import pandas as pd
 from typing import Optional, List, Dict, Any
-from fastapi import FastAPI, Query, HTTPException
+from fastapi import FastAPI, Query, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 
@@ -56,6 +56,13 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+@app.middleware("http")
+async def prefix_handler(request: Request, call_next):
+    path = request.scope.get("path", "")
+    if not path.startswith("/api") and not path.startswith("/docs") and not path.startswith("/openapi.json"):
+        request.scope["path"] = f"/api{path}"
+    return await call_next(request)
 
 # Global in-memory cache to guarantee sub-millisecond response times
 CACHE = {}
