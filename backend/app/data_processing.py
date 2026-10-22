@@ -45,14 +45,25 @@ RISK_COL = "academic_risk"
 def load_raw_data(dataset_type="mat"):
     """
     Loads raw CSV data safely without altering the original files.
-    dataset_type: 'mat' (Math course) or 'por' (Portuguese course).
+    Searches multiple candidate paths for compatibility with local dev and Vercel serverless.
     """
-    path = PRIMARY_DATA_PATH if dataset_type == "mat" else SECONDARY_DATA_PATH
-    if not os.path.exists(path):
-        raise FileNotFoundError(f"Dataset not found at: {path}")
+    filename = "student-mat.csv" if dataset_type == "mat" else "student-por.csv"
     
-    df = pd.read_csv(path, sep=";")
-    return df
+    candidates = [
+        PRIMARY_DATA_PATH if dataset_type == "mat" else SECONDARY_DATA_PATH,
+        os.path.join(os.getcwd(), "backend", "data", filename),
+        os.path.join(os.getcwd(), "data", filename),
+        os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data", filename),
+        os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", filename),
+        os.path.join("/var/task", "backend", "data", filename),
+        os.path.join("/var/task", "data", filename),
+    ]
+    
+    for candidate in candidates:
+        if candidate and os.path.exists(candidate):
+            return pd.read_csv(candidate, sep=";")
+            
+    raise FileNotFoundError(f"Dataset {filename} not found across candidate search paths.")
 
 
 def inspect_data_quality(df):
@@ -79,7 +90,7 @@ def inspect_data_quality(df):
 def prepare_dataset(df):
     """
     Creates cleaned copy with defined academic_risk column (G3 < 10 -> At Risk: 1, else 0).
-    Saves clean copy to data/processed/ without modifying original raw data.
+    Safely handles read-only filesystems in serverless cloud environments (e.g. Vercel).
     """
     clean_df = df.copy()
     
@@ -87,9 +98,12 @@ def prepare_dataset(df):
     clean_df[RISK_COL] = (clean_df[TARGET_COL] < 10).astype(int)
     clean_df["risk_label"] = clean_df[RISK_COL].map({1: "At Risk", 0: "Not At Risk"})
     
-    # Save processed copy
-    os.makedirs(os.path.dirname(PROCESSED_DATA_PATH), exist_ok=True)
-    clean_df.to_csv(PROCESSED_DATA_PATH, index=False)
+    # Save processed copy when filesystem is writable (safely skipped on read-only serverless lambdas)
+    try:
+        os.makedirs(os.path.dirname(PROCESSED_DATA_PATH), exist_ok=True)
+        clean_df.to_csv(PROCESSED_DATA_PATH, index=False)
+    except Exception:
+        pass
     
     return clean_df
 
