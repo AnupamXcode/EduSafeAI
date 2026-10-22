@@ -8,6 +8,7 @@
     "dev:frontend": "npm --prefix frontend run dev",
     "dev:backend": "py -3.11 -m uvicorn app.main:app --app-dir backend --port 8000 --host 127.0.0.1",
     "build": "npm --prefix frontend run build",
+    "vercel-build": "npm --prefix frontend run build",
     "test:api": "py -3.11 test_api.py",
     "test:ml": "py -3.11 test_app.py"
   },
@@ -17,7 +18,8 @@
     "fastapi",
     "react",
     "typescript",
-    "scikit-learn"
+    "scikit-learn",
+    "vercel"
   ],
   "author": "EduRisk AI Research Team",
   "license": "MIT"
