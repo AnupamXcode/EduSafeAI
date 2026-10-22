@@ -1,7 +1,23 @@
 import React, { useState } from 'react';
 import { api } from '../api/client';
 import { StudentInput, GradePredictionResult, RiskPredictionResult } from '../types';
-import { Calculator, AlertTriangle, CheckCircle, Sparkles, HelpCircle, ShieldAlert, CheckCircle2, RefreshCw, ArrowRight } from 'lucide-react';
+import {
+  Calculator,
+  AlertTriangle,
+  Sparkles,
+  ShieldAlert,
+  CheckCircle2,
+  RefreshCw,
+  ArrowRight,
+  Sliders,
+  ChevronDown,
+  ChevronUp,
+  GraduationCap,
+  Clock,
+  BookOpen,
+  Wifi,
+  Users
+} from 'lucide-react';
 
 interface PredictionPageProps {
   course: string;
@@ -21,8 +37,9 @@ export const PredictionPage: React.FC<PredictionPageProps> = ({ course }) => {
   const [riskResult, setRiskResult] = useState<RiskPredictionResult | null>(null);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [selectedPreset, setSelectedPreset] = useState<PresetStudentRecord | null>(null);
+  const [showAdvanced, setShowAdvanced] = useState<boolean>(false);
 
-  // Form student state
+  // Form student state with sensible defaults
   const [student, setStudent] = useState<StudentInput>({
     school: 'GP',
     sex: 'F',
@@ -60,8 +77,8 @@ export const PredictionPage: React.FC<PredictionPageProps> = ({ course }) => {
 
   const presets: Record<'good' | 'average' | 'at_risk', PresetStudentRecord> = {
     good: {
-      name: 'High Achiever (Exemplar Record)',
-      badge: 'Expected Passing (Safe)',
+      name: 'High Achiever Student',
+      badge: 'Expected Pass (Safe)',
       actualG3: 16,
       data: {
         G1: 16,
@@ -78,8 +95,8 @@ export const PredictionPage: React.FC<PredictionPageProps> = ({ course }) => {
       },
     },
     average: {
-      name: 'Average Student (Balanced Record)',
-      badge: 'Borderline Passing',
+      name: 'Average Student',
+      badge: 'Borderline Pass',
       actualG3: 11,
       data: {
         G1: 11,
@@ -96,8 +113,8 @@ export const PredictionPage: React.FC<PredictionPageProps> = ({ course }) => {
       },
     },
     at_risk: {
-      name: 'At-Risk Student (Vulnerable Record)',
-      badge: 'Critical Intervention Needed',
+      name: 'At-Risk Student',
+      badge: 'Needs Help / Low Marks',
       actualG3: 7,
       data: {
         G1: 7,
@@ -129,7 +146,6 @@ export const PredictionPage: React.FC<PredictionPageProps> = ({ course }) => {
     setLoading(true);
     setErrorMsg(null);
     try {
-      // Call genuine Python ML backend for regression grade and classification risk
       const [gRes, rRes] = await Promise.all([
         api.predictGrade(student, earlyMode),
         api.predictRisk(student, earlyMode),
@@ -138,7 +154,7 @@ export const PredictionPage: React.FC<PredictionPageProps> = ({ course }) => {
       setRiskResult(rRes);
     } catch (err: any) {
       console.error(err);
-      setErrorMsg('Unable to connect to ML backend. Please confirm FastAPI is running at http://127.0.0.1:8000.');
+      setErrorMsg('Unable to connect to ML backend. Please confirm FastAPI is running.');
     } finally {
       setLoading(false);
     }
@@ -146,65 +162,67 @@ export const PredictionPage: React.FC<PredictionPageProps> = ({ course }) => {
 
   return (
     <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10 py-8 lg:py-12 space-y-8">
-      {/* Page Header */}
+      {/* Header */}
       <section className="space-y-3 animate-slide-left">
         <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#E9E4F5] text-[#5146A5] rounded-full text-xs font-semibold">
           <Calculator size={14} className="text-[#F28C45]" />
-          <span>Interactive Model Lab: Live Regression &amp; Risk Classification</span>
+          <span>Interactive Student Grade &amp; Risk Predictor</span>
         </div>
         <h1 className="font-serif text-3xl sm:text-4xl font-bold text-[#17243B] tracking-tight">
-          Try predicting a student's final grade.
+          Estimate Final Student Marks &amp; Risk Level
         </h1>
         <p className="text-base text-[#555866] max-w-3xl leading-relaxed">
-          Enter the available student information and see what the trained model estimates. Form and predictions sit side-by-side on desktop for rapid testing during faculty demonstrations.
+          Select a quick preset profile or adjust the simple student sliders below to see real-time predictions from the trained Machine Learning model.
         </p>
       </section>
 
-      {/* Preset Quick-Load Ribbon */}
+      {/* 1-Click Quick Student Presets */}
       <section className="p-4 bg-[#FFFFFF] border border-[#E9E4F5] rounded-2xl shadow-2xs flex flex-wrap items-center justify-between gap-4">
         <div className="flex items-center gap-2">
-          <Sparkles size={16} className="text-[#F28C45]" />
-          <span className="text-xs font-bold text-[#17243B]">1-Click Test Student Presets:</span>
-          <span className="text-xs text-[#555866] hidden sm:inline">(Populate form instantly for viva defense)</span>
+          <Sparkles size={18} className="text-[#F28C45]" />
+          <div>
+            <span className="text-xs font-bold text-[#17243B] block">Quick 1-Click Test Profiles</span>
+            <span className="text-[11px] text-[#555866]">Instantly fills the form with real test cases</span>
+          </div>
         </div>
 
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-2.5">
           <button
             type="button"
             onClick={() => handleApplyPreset('good')}
-            className="px-3 py-1.5 rounded-lg text-xs font-bold bg-[#E9E4F5] text-[#5146A5] hover:bg-[#5146A5] hover:text-[#FFFFFF] transition-all cursor-pointer border border-[#E9E4F5]"
+            className="px-3.5 py-1.5 rounded-xl text-xs font-bold bg-[#E9E4F5] text-[#5146A5] hover:bg-[#5146A5] hover:text-[#FFFFFF] transition-all cursor-pointer border border-[#E9E4F5] flex items-center gap-1.5 shadow-2xs"
           >
-            Good Student (Passing)
+            <span>🌟 Top Achiever</span>
           </button>
           <button
             type="button"
             onClick={() => handleApplyPreset('average')}
-            className="px-3 py-1.5 rounded-lg text-xs font-bold bg-[#FAF7F0] text-[#17243B] hover:bg-[#17243B] hover:text-[#FFFFFF] transition-all cursor-pointer border border-[#E9E4F5]"
+            className="px-3.5 py-1.5 rounded-xl text-xs font-bold bg-[#FAF7F0] text-[#17243B] hover:bg-[#17243B] hover:text-[#FFFFFF] transition-all cursor-pointer border border-[#E9E4F5] flex items-center gap-1.5 shadow-2xs"
           >
-            Average Student (Borderline)
+            <span>⚖️ Average Student</span>
           </button>
           <button
             type="button"
             onClick={() => handleApplyPreset('at_risk')}
-            className="px-3 py-1.5 rounded-lg text-xs font-bold bg-[#FBE6D5] text-[#D6732E] hover:bg-[#F28C45] hover:text-[#FFFFFF] transition-all cursor-pointer border border-[#FBE6D5]"
+            className="px-3.5 py-1.5 rounded-xl text-xs font-bold bg-[#FBE6D5] text-[#D6732E] hover:bg-[#F28C45] hover:text-[#FFFFFF] transition-all cursor-pointer border border-[#FBE6D5] flex items-center gap-1.5 shadow-2xs"
           >
-            At-Risk Student (Intervention)
+            <span>⚠️ At-Risk Student</span>
           </button>
         </div>
       </section>
 
-      {/* Desktop Two-Column Layout (Side-by-Side: 7 cols form, 5 cols result) */}
+      {/* Main Grid: Simplified Form (7 cols) + Live Result (5 cols) */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-        {/* Left Column: Student Input Form (7 cols) */}
+        {/* Left Column: Easy Student Form */}
         <div className="lg:col-span-7 bg-[#FFFFFF] border border-[#E9E4F5] rounded-2xl p-6 sm:p-7 shadow-2xs space-y-6">
           <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#FAF7F0] pb-4">
             <div>
-              <h2 className="font-serif text-xl font-bold text-[#17243B]">Student Attributes Form</h2>
-              <p className="text-xs text-[#555866]">Configure demographic and academic indicators</p>
+              <h2 className="font-serif text-xl font-bold text-[#17243B]">Student Information</h2>
+              <p className="text-xs text-[#555866]">Adjust key parameters to see instant predictions</p>
             </div>
 
-            {/* Early vs Later Mode Toggle */}
-            <div className="flex items-center gap-2 bg-[#FAF7F0] p-1 rounded-xl border border-[#E9E4F5]">
+            {/* Early vs Standard Toggle */}
+            <div className="flex items-center gap-1 bg-[#FAF7F0] p-1 rounded-xl border border-[#E9E4F5]">
               <button
                 type="button"
                 onClick={() => setEarlyMode(false)}
@@ -212,7 +230,7 @@ export const PredictionPage: React.FC<PredictionPageProps> = ({ course }) => {
                   !earlyMode ? 'bg-[#5146A5] text-[#FFFFFF] shadow-2xs' : 'text-[#555866] hover:text-[#17243B]'
                 }`}
               >
-                Later Mode (G1 + G2)
+                Standard (Exam 1 &amp; 2)
               </button>
               <button
                 type="button"
@@ -221,167 +239,270 @@ export const PredictionPage: React.FC<PredictionPageProps> = ({ course }) => {
                   earlyMode ? 'bg-[#5146A5] text-[#FFFFFF] shadow-2xs' : 'text-[#555866] hover:text-[#17243B]'
                 }`}
               >
-                Early Mode (No G2)
+                Early Warning (Exam 1 Only)
               </button>
             </div>
           </div>
 
-          <form onSubmit={handlePredict} className="space-y-5">
-            {/* Academic Grades Row */}
-            <div className="p-4 bg-[#FAF7F0] rounded-xl border border-[#E9E4F5] space-y-3">
-              <span className="text-[11px] font-bold uppercase tracking-wider text-[#5146A5] block">
-                Academic Performance Indicators
-              </span>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
-                {/* G1 */}
-                <div>
-                  <label className="font-semibold text-[#17243B] block mb-1">
-                    First Period Grade (G1: 0 to 20)
-                  </label>
-                  <input
-                    type="number"
-                    min="0"
-                    max="20"
-                    value={student.G1}
-                    onChange={(e) => setStudent({ ...student, G1: Number(e.target.value) })}
-                    className="w-full px-3 py-2 bg-[#FFFFFF] border border-[#E9E4F5] rounded-lg text-[#17243B] text-sm font-semibold outline-none focus:border-[#5146A5]"
-                    required
-                  />
-                  <span className="text-[10px] text-[#828696] mt-0.5 block">High longitudinal correlation with final grade</span>
-                </div>
-
-                {/* G2 */}
-                <div>
-                  <div className="flex items-center justify-between mb-1">
-                    <label className="font-semibold text-[#17243B]">
-                      Second Period Grade (G2: 0 to 20)
-                    </label>
-                    {earlyMode && (
-                      <span className="text-[10px] font-bold text-[#F28C45] bg-[#FBE6D5] px-1.5 rounded">
-                        Excluded (Early Mode)
-                      </span>
-                    )}
-                  </div>
-                  <input
-                    type="number"
-                    min="0"
-                    max="20"
-                    disabled={earlyMode}
-                    value={earlyMode ? '' : student.G2}
-                    placeholder={earlyMode ? 'Not available in Early Warning mode' : '0 to 20'}
-                    onChange={(e) => setStudent({ ...student, G2: Number(e.target.value) })}
-                    className={`w-full px-3 py-2 rounded-lg text-sm font-semibold outline-none border ${
-                      earlyMode
-                        ? 'bg-[#E9E4F5]/40 border-[#E9E4F5] text-[#828696] cursor-not-allowed'
-                        : 'bg-[#FFFFFF] border-[#E9E4F5] text-[#17243B] focus:border-[#5146A5]'
+          <form onSubmit={handlePredict} className="space-y-6">
+            {/* Core Parameter 1: Exam 1 Score */}
+            <div className="p-4 bg-[#FAF7F0] rounded-xl border border-[#E9E4F5] space-y-2.5">
+              <div className="flex items-center justify-between">
+                <label className="text-xs font-bold text-[#17243B] flex items-center gap-1.5">
+                  <BookOpen size={15} className="text-[#5146A5]" />
+                  <span>First Exam Marks (G1)</span>
+                </label>
+                <div className="flex items-center gap-2">
+                  <span
+                    className={`text-xs font-bold px-2 py-0.5 rounded-full ${
+                      student.G1 >= 10 ? 'bg-[#E9E4F5] text-[#5146A5]' : 'bg-[#FBE6D5] text-[#D6732E]'
                     }`}
-                    required={!earlyMode}
-                  />
-                  <span className="text-[10px] text-[#828696] mt-0.5 block">
-                    {earlyMode ? 'Simulates early warning before midterm exam' : 'Midterm exam milestone score'}
+                  >
+                    {student.G1 >= 10 ? 'Passing' : 'Failing'}
+                  </span>
+                  <span className="font-mono text-base font-bold text-[#17243B] bg-[#FFFFFF] px-2.5 py-0.5 rounded-lg border border-[#E9E4F5]">
+                    {student.G1} / 20
                   </span>
                 </div>
               </div>
+              <input
+                type="range"
+                min="0"
+                max="20"
+                step="1"
+                value={student.G1}
+                onChange={(e) => setStudent({ ...student, G1: Number(e.target.value) })}
+                className="w-full accent-[#5146A5] cursor-pointer h-2 bg-[#E9E4F5] rounded-lg"
+              />
+              <div className="flex justify-between text-[10px] text-[#828696]">
+                <span>0 (Lowest)</span>
+                <span className="text-[#5146A5] font-semibold">10 (Pass Threshold)</span>
+                <span>20 (Full Marks)</span>
+              </div>
             </div>
 
-            {/* Core Study & Behavioral Features */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
-              {/* Study Time */}
-              <div>
-                <label className="font-semibold text-[#17243B] block mb-1">
-                  Weekly Study Time
+            {/* Core Parameter 2: Exam 2 Score (Disabled if Early Mode) */}
+            <div
+              className={`p-4 rounded-xl border space-y-2.5 transition-all ${
+                earlyMode ? 'bg-[#FAF7F0]/50 border-dashed border-[#E9E4F5] opacity-60' : 'bg-[#FAF7F0] border-[#E9E4F5]'
+              }`}
+            >
+              <div className="flex items-center justify-between">
+                <label className="text-xs font-bold text-[#17243B] flex items-center gap-1.5">
+                  <BookOpen size={15} className="text-[#5146A5]" />
+                  <span>Second Exam Marks (G2)</span>
                 </label>
-                <select
-                  value={student.studytime}
-                  onChange={(e) => setStudent({ ...student, studytime: Number(e.target.value) })}
-                  className="w-full px-3 py-2 bg-[#FAF7F0] border border-[#E9E4F5] rounded-lg text-[#17243B] text-sm outline-none focus:border-[#5146A5] cursor-pointer"
-                >
-                  <option value={1}>1: &lt; 2 hours per week</option>
-                  <option value={2}>2: 2 – 5 hours per week</option>
-                  <option value={3}>3: 5 – 10 hours per week</option>
-                  <option value={4}>4: &gt; 10 hours per week</option>
-                </select>
+                <div className="flex items-center gap-2">
+                  {earlyMode ? (
+                    <span className="text-xs font-semibold px-2 py-0.5 rounded bg-[#E9E4F5] text-[#555866]">
+                      Skipped in Early Warning Mode
+                    </span>
+                  ) : (
+                    <>
+                      <span
+                        className={`text-xs font-bold px-2 py-0.5 rounded-full ${
+                          (student.G2 ?? 0) >= 10 ? 'bg-[#E9E4F5] text-[#5146A5]' : 'bg-[#FBE6D5] text-[#D6732E]'
+                        }`}
+                      >
+                        {(student.G2 ?? 0) >= 10 ? 'Passing' : 'Failing'}
+                      </span>
+                      <span className="font-mono text-base font-bold text-[#17243B] bg-[#FFFFFF] px-2.5 py-0.5 rounded-lg border border-[#E9E4F5]">
+                        {student.G2} / 20
+                      </span>
+                    </>
+                  )}
+                </div>
               </div>
+              <input
+                type="range"
+                min="0"
+                max="20"
+                step="1"
+                disabled={earlyMode}
+                value={earlyMode ? 0 : (student.G2 ?? 0)}
+                onChange={(e) => setStudent({ ...student, G2: Number(e.target.value) })}
+                className={`w-full accent-[#5146A5] h-2 rounded-lg ${
+                  earlyMode ? 'cursor-not-allowed bg-[#E9E4F5]/50' : 'cursor-pointer bg-[#E9E4F5]'
+                }`}
+              />
+              <div className="flex justify-between text-[10px] text-[#828696]">
+                <span>0 (Lowest)</span>
+                <span className="text-[#5146A5] font-semibold">10 (Pass Threshold)</span>
+                <span>20 (Full Marks)</span>
+              </div>
+            </div>
 
-              {/* Past Failures */}
-              <div>
-                <label className="font-semibold text-[#17243B] block mb-1">
-                  Previous Class Failures (0 to 3)
-                </label>
-                <select
-                  value={student.failures}
-                  onChange={(e) => setStudent({ ...student, failures: Number(e.target.value) })}
-                  className="w-full px-3 py-2 bg-[#FAF7F0] border border-[#E9E4F5] rounded-lg text-[#17243B] text-sm outline-none focus:border-[#5146A5] cursor-pointer"
-                >
-                  <option value={0}>0 failures (Clean track record)</option>
-                  <option value={1}>1 previous failure</option>
-                  <option value={2}>2 previous failures</option>
-                  <option value={3}>3 or more failures</option>
-                </select>
+            {/* Core Parameter 3: Weekly Study Time (Interactive Chips) */}
+            <div className="space-y-2">
+              <label className="text-xs font-bold text-[#17243B] flex items-center gap-1.5">
+                <Clock size={15} className="text-[#5146A5]" />
+                <span>Weekly Study Hours</span>
+              </label>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                {[
+                  { value: 1, label: '< 2 hrs / wk', desc: 'Minimal' },
+                  { value: 2, label: '2 – 5 hrs / wk', desc: 'Average' },
+                  { value: 3, label: '5 – 10 hrs / wk', desc: 'Good' },
+                  { value: 4, label: '> 10 hrs / wk', desc: 'Intensive' },
+                ].map((item) => (
+                  <button
+                    key={item.value}
+                    type="button"
+                    onClick={() => setStudent({ ...student, studytime: item.value })}
+                    className={`p-2.5 rounded-xl border text-left transition-all cursor-pointer ${
+                      student.studytime === item.value
+                        ? 'bg-[#5146A5] text-[#FFFFFF] border-[#5146A5] shadow-2xs'
+                        : 'bg-[#FAF7F0] text-[#17243B] border-[#E9E4F5] hover:border-[#5146A5]'
+                    }`}
+                  >
+                    <div className="text-xs font-bold">{item.label}</div>
+                    <div
+                      className={`text-[10px] ${
+                        student.studytime === item.value ? 'text-[#FAF7F0]/80' : 'text-[#828696]'
+                      }`}
+                    >
+                      {item.desc}
+                    </div>
+                  </button>
+                ))}
               </div>
+            </div>
 
-              {/* Absences */}
-              <div>
-                <label className="font-semibold text-[#17243B] block mb-1">
-                  School Absences (0 to 93 days)
-                </label>
-                <input
-                  type="number"
-                  min="0"
-                  max="93"
-                  value={student.absences}
-                  onChange={(e) => setStudent({ ...student, absences: Number(e.target.value) })}
-                  className="w-full px-3 py-2 bg-[#FAF7F0] border border-[#E9E4F5] rounded-lg text-[#17243B] text-sm outline-none focus:border-[#5146A5]"
-                  required
-                />
+            {/* Core Parameter 4: Past Failed Classes (Pill Selectors) */}
+            <div className="space-y-2">
+              <label className="text-xs font-bold text-[#17243B] flex items-center gap-1.5">
+                <GraduationCap size={15} className="text-[#5146A5]" />
+                <span>Past Failed Classes (Backlogs)</span>
+              </label>
+              <div className="grid grid-cols-4 gap-2">
+                {[
+                  { value: 0, label: '0 Failures', tag: 'Clean record' },
+                  { value: 1, label: '1 Failure', tag: 'Minor risk' },
+                  { value: 2, label: '2 Failures', tag: 'Moderate' },
+                  { value: 3, label: '3+ Failures', tag: 'High risk' },
+                ].map((item) => (
+                  <button
+                    key={item.value}
+                    type="button"
+                    onClick={() => setStudent({ ...student, failures: item.value })}
+                    className={`p-2 rounded-xl border text-center transition-all cursor-pointer ${
+                      student.failures === item.value
+                        ? 'bg-[#5146A5] text-[#FFFFFF] border-[#5146A5] shadow-2xs'
+                        : 'bg-[#FAF7F0] text-[#17243B] border-[#E9E4F5] hover:border-[#5146A5]'
+                    }`}
+                  >
+                    <div className="text-xs font-bold">{item.label}</div>
+                    <div
+                      className={`text-[9px] truncate ${
+                        student.failures === item.value ? 'text-[#FAF7F0]/80' : 'text-[#828696]'
+                      }`}
+                    >
+                      {item.tag}
+                    </div>
+                  </button>
+                ))}
               </div>
+            </div>
 
-              {/* Mother's Education */}
-              <div>
-                <label className="font-semibold text-[#17243B] block mb-1">
-                  Mother's Education (Medu)
-                </label>
-                <select
-                  value={student.Medu}
-                  onChange={(e) => setStudent({ ...student, Medu: Number(e.target.value) })}
-                  className="w-full px-3 py-2 bg-[#FAF7F0] border border-[#E9E4F5] rounded-lg text-[#17243B] text-sm outline-none focus:border-[#5146A5] cursor-pointer"
-                >
-                  <option value={1}>1: Primary (4th grade)</option>
-                  <option value={2}>2: 5th to 9th grade</option>
-                  <option value={3}>3: Secondary Education</option>
-                  <option value={4}>4: Higher Education (University)</option>
-                </select>
-              </div>
+            {/* Optional / Advanced Factors Accordion (Kept Clean by Default) */}
+            <div className="border border-[#E9E4F5] rounded-xl overflow-hidden">
+              <button
+                type="button"
+                onClick={() => setShowAdvanced(!showAdvanced)}
+                className="w-full px-4 py-3 bg-[#FAF7F0] flex items-center justify-between text-xs font-bold text-[#17243B] hover:bg-[#E9E4F5]/50 transition-all cursor-pointer"
+              >
+                <div className="flex items-center gap-2">
+                  <Sliders size={14} className="text-[#5146A5]" />
+                  <span>Customize Additional Factors (Absences, Internet, etc.)</span>
+                </div>
+                {showAdvanced ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+              </button>
 
-              {/* Higher Education Aspiration */}
-              <div>
-                <label className="font-semibold text-[#17243B] block mb-1">
-                  Wants Higher Education?
-                </label>
-                <select
-                  value={student.higher}
-                  onChange={(e) => setStudent({ ...student, higher: e.target.value })}
-                  className="w-full px-3 py-2 bg-[#FAF7F0] border border-[#E9E4F5] rounded-lg text-[#17243B] text-sm outline-none focus:border-[#5146A5] cursor-pointer"
-                >
-                  <option value="yes">Yes (Aspires for university)</option>
-                  <option value="no">No</option>
-                </select>
-              </div>
+              {showAdvanced && (
+                <div className="p-4 bg-[#FFFFFF] grid grid-cols-1 sm:grid-cols-2 gap-4 border-t border-[#E9E4F5] text-xs animate-scale-in">
+                  {/* Absences */}
+                  <div>
+                    <label className="font-semibold text-[#17243B] block mb-1">
+                      Days Absent ({student.absences} days)
+                    </label>
+                    <input
+                      type="range"
+                      min="0"
+                      max="40"
+                      value={student.absences}
+                      onChange={(e) => setStudent({ ...student, absences: Number(e.target.value) })}
+                      className="w-full accent-[#5146A5] cursor-pointer h-2 bg-[#FAF7F0] rounded-lg"
+                    />
+                    <div className="flex justify-between text-[10px] text-[#828696] mt-1">
+                      <span>0 days (Perfect)</span>
+                      <span>40 days</span>
+                    </div>
+                  </div>
 
-              {/* Internet Access */}
-              <div>
-                <label className="font-semibold text-[#17243B] block mb-1">
-                  Home Internet Access?
-                </label>
-                <select
-                  value={student.internet}
-                  onChange={(e) => setStudent({ ...student, internet: e.target.value })}
-                  className="w-full px-3 py-2 bg-[#FAF7F0] border border-[#E9E4F5] rounded-lg text-[#17243B] text-sm outline-none focus:border-[#5146A5] cursor-pointer"
-                >
-                  <option value="yes">Yes (Has internet at home)</option>
-                  <option value="no">No</option>
-                </select>
-              </div>
+                  {/* Mother's Education */}
+                  <div>
+                    <label className="font-semibold text-[#17243B] block mb-1">
+                      Mother's Education Level
+                    </label>
+                    <select
+                      value={student.Medu}
+                      onChange={(e) => setStudent({ ...student, Medu: Number(e.target.value) })}
+                      className="w-full px-3 py-2 bg-[#FAF7F0] border border-[#E9E4F5] rounded-lg text-[#17243B] text-xs outline-none focus:border-[#5146A5] cursor-pointer"
+                    >
+                      <option value={1}>Primary School</option>
+                      <option value={2}>Middle School</option>
+                      <option value={3}>High School</option>
+                      <option value={4}>University / Higher</option>
+                    </select>
+                  </div>
+
+                  {/* Aspires for University */}
+                  <div>
+                    <label className="font-semibold text-[#17243B] block mb-1">
+                      Plans to Attend University?
+                    </label>
+                    <div className="grid grid-cols-2 gap-2">
+                      {['yes', 'no'].map((val) => (
+                        <button
+                          key={val}
+                          type="button"
+                          onClick={() => setStudent({ ...student, higher: val })}
+                          className={`py-1.5 rounded-lg font-bold border transition-all cursor-pointer ${
+                            student.higher === val
+                              ? 'bg-[#5146A5] text-[#FFFFFF] border-[#5146A5]'
+                              : 'bg-[#FAF7F0] text-[#555866] border-[#E9E4F5]'
+                          }`}
+                        >
+                          {val === 'yes' ? 'Yes' : 'No'}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Home Internet */}
+                  <div>
+                    <label className="font-semibold text-[#17243B] block mb-1">
+                      Internet at Home?
+                    </label>
+                    <div className="grid grid-cols-2 gap-2">
+                      {['yes', 'no'].map((val) => (
+                        <button
+                          key={val}
+                          type="button"
+                          onClick={() => setStudent({ ...student, internet: val })}
+                          className={`py-1.5 rounded-lg font-bold border transition-all cursor-pointer ${
+                            student.internet === val
+                              ? 'bg-[#5146A5] text-[#FFFFFF] border-[#5146A5]'
+                              : 'bg-[#FAF7F0] text-[#555866] border-[#E9E4F5]'
+                          }`}
+                        >
+                          {val === 'yes' ? 'Yes' : 'No'}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
 
             {errorMsg && (
@@ -391,6 +512,7 @@ export const PredictionPage: React.FC<PredictionPageProps> = ({ course }) => {
               </div>
             )}
 
+            {/* Predict Button */}
             <button
               type="submit"
               disabled={loading}
@@ -399,7 +521,7 @@ export const PredictionPage: React.FC<PredictionPageProps> = ({ course }) => {
               {loading ? (
                 <>
                   <RefreshCw size={18} className="animate-spin" />
-                  <span>Computing Prediction on Backend...</span>
+                  <span>Computing Prediction...</span>
                 </>
               ) : (
                 <>
@@ -418,26 +540,26 @@ export const PredictionPage: React.FC<PredictionPageProps> = ({ course }) => {
               <span className="text-[11px] font-bold uppercase tracking-wider text-[#5146A5]">
                 Model Output
               </span>
-              <h2 className="font-serif text-xl font-bold text-[#17243B]">Estimated Prediction</h2>
+              <h2 className="font-serif text-xl font-bold text-[#17243B]">Estimated Result</h2>
             </div>
             <span className="px-2.5 py-0.5 rounded-full bg-[#E9E4F5] text-[#5146A5] text-xs font-semibold">
-              FastAPI Real-Time
+              Live ML Model
             </span>
           </div>
 
           {gradeResult ? (
             <div className="space-y-6 animate-scale-in">
-              {/* Predicted Final Grade Large Display */}
+              {/* Predicted Final Grade Display */}
               <div className="p-6 bg-gradient-to-br from-[#FAF7F0] to-[#E9E4F5]/50 rounded-2xl border border-[#E9E4F5] text-center space-y-2">
                 <span className="text-xs text-[#555866] font-bold uppercase tracking-wider block">
-                  Predicted Final Grade (G3)
+                  Predicted Final Score
                 </span>
                 <div className="text-5xl font-serif font-bold text-[#17243B]">
                   {gradeResult.predicted_g3.toFixed(1)}{' '}
                   <span className="text-lg text-[#828696] font-sans font-normal">/ 20</span>
                 </div>
                 <p className="text-xs text-[#555866]">
-                  Expected Margin: &plusmn;{gradeResult.expected_error_margin.toFixed(2)} marks (on 20-point scale)
+                  Expected Error Range: &plusmn;{gradeResult.expected_error_margin.toFixed(2)} marks
                 </p>
 
                 {/* Horizontal Grade Scale */}
@@ -451,18 +573,18 @@ export const PredictionPage: React.FC<PredictionPageProps> = ({ course }) => {
                       }`}
                       style={{ width: `${Math.min(100, Math.max(0, (gradeResult.predicted_g3 / 20) * 100))}%` }}
                     ></div>
-                    {/* 10 mark indicator */}
+                    {/* 10 mark cutoff line */}
                     <div className="absolute top-0 bottom-0 left-[50%] w-0.5 bg-[#F28C45] z-10"></div>
                   </div>
                   <div className="flex justify-between text-[11px] text-[#828696] font-mono px-1">
                     <span>0 (Fail)</span>
-                    <span className="text-[#F28C45] font-bold">10 (Project Pass Cutoff)</span>
+                    <span className="text-[#F28C45] font-bold">10 (Pass Threshold)</span>
                     <span>20 (Max)</span>
                   </div>
                 </div>
               </div>
 
-              {/* Academic Risk Classification Card */}
+              {/* Academic Risk Status Banner */}
               <div
                 className={`p-5 rounded-2xl border ${
                   gradeResult.predicted_g3 < 10
@@ -476,27 +598,25 @@ export const PredictionPage: React.FC<PredictionPageProps> = ({ course }) => {
                   <CheckCircle2 size={26} className="shrink-0 mt-0.5 text-[#5146A5]" />
                 )}
                 <div className="space-y-1">
-                  <div className="flex items-center gap-2">
-                    <h4 className="font-serif font-bold text-base">
-                      {gradeResult.predicted_g3 < 10 ? 'Academic Risk Status: At Risk' : 'Academic Risk Status: Not At Risk'}
-                    </h4>
-                  </div>
+                  <h4 className="font-serif font-bold text-base">
+                    {gradeResult.predicted_g3 < 10 ? 'Academic Status: At Risk' : 'Academic Status: On Track (Safe)'}
+                  </h4>
                   <p className="text-xs text-[#292B33] leading-relaxed">
                     {gradeResult.predicted_g3 < 10
-                      ? 'Student is projected to score below 10 marks. Remedial coursework, mentor check-ins, and parental consultation are recommended.'
-                      : 'Student is projected to meet academic standards. Recommend continued self-directed study and advanced projects.'}
+                      ? 'Student is predicted to score below the 10-point pass cutoff. Extra tutoring, mentoring sessions, and teacher check-ins are recommended.'
+                      : 'Student is predicted to comfortably pass. Continue current study habits and academic engagement.'}
                   </p>
                 </div>
               </div>
 
-              {/* Retrospective Comparison with Actual Grade if Preset loaded */}
+              {/* Verification against selected preset */}
               {selectedPreset && (
                 <div className="p-4 bg-[#FAF7F0] border border-[#E9E4F5] rounded-xl text-xs space-y-1.5">
                   <span className="text-[11px] font-bold text-[#5146A5] uppercase block">
-                    Retrospective Verification ({selectedPreset.name})
+                    Preset Comparison ({selectedPreset.name})
                   </span>
                   <div className="flex justify-between">
-                    <span className="text-[#555866]">Actual Exam Grade in Record:</span>
+                    <span className="text-[#555866]">Actual Exam Grade:</span>
                     <strong className="text-[#17243B] font-mono">{selectedPreset.actualG3} / 20</strong>
                   </div>
                   <div className="flex justify-between">
@@ -504,40 +624,38 @@ export const PredictionPage: React.FC<PredictionPageProps> = ({ course }) => {
                     <strong className="text-[#5146A5] font-mono">{gradeResult.predicted_g3.toFixed(1)} / 20</strong>
                   </div>
                   <div className="flex justify-between border-t border-[#E9E4F5] pt-1">
-                    <span className="text-[#555866]">Prediction Variance:</span>
+                    <span className="text-[#555866]">Difference:</span>
                     <strong className="text-[#789579] font-mono">
-                      {Math.abs(gradeResult.predicted_g3 - selectedPreset.actualG3).toFixed(1)} marks error
+                      {Math.abs(gradeResult.predicted_g3 - selectedPreset.actualG3).toFixed(1)} marks
                     </strong>
                   </div>
                 </div>
               )}
 
-              {/* Model & Probability Details */}
+              {/* Model & Probability Breakdown */}
               <div className="space-y-2 text-xs border-t border-[#FAF7F0] pt-4 text-[#555866]">
                 <div className="flex justify-between py-1 border-b border-[#FAF7F0]">
-                  <span className="font-medium">Regression Estimator:</span>
+                  <span className="font-medium">Model Used:</span>
                   <span className="font-semibold text-[#17243B]">
-                    {earlyMode ? 'Ridge Regression (Early Warning Mode)' : 'Multiple Linear Regression'}
+                    {earlyMode ? 'Ridge Regression (Early Mode)' : 'Linear Regression Pipeline'}
                   </span>
-                </div>
-                <div className="flex justify-between py-1 border-b border-[#FAF7F0]">
-                  <span className="font-medium">Risk Classifier:</span>
-                  <span className="font-semibold text-[#17243B]">
-                    Logistic Regression &amp; Random Forest Ensemble
-                  </span>
-                </div>
-                <div className="flex justify-between py-1 border-b border-[#FAF7F0]">
-                  <span className="font-medium">Risk Definition:</span>
-                  <span className="font-semibold text-[#17243B]">Project Rule: G3 &lt; 10 Marks</span>
                 </div>
                 {riskResult && (
-                  <div className="flex justify-between py-1">
-                    <span className="font-medium">Model Risk Probability:</span>
-                    <span className="font-mono font-bold text-[#F28C45]">
+                  <div className="flex justify-between py-1 border-b border-[#FAF7F0]">
+                    <span className="font-medium">Calculated Failure Risk:</span>
+                    <span
+                      className={`font-mono font-bold ${
+                        riskResult.risk_probability > 0.5 ? 'text-[#D6732E]' : 'text-[#789579]'
+                      }`}
+                    >
                       {(riskResult.risk_probability * 100).toFixed(1)}%
                     </span>
                   </div>
                 )}
+                <div className="flex justify-between py-1">
+                  <span className="font-medium">Pass Cutoff:</span>
+                  <span className="font-semibold text-[#17243B]">10 / 20 Marks</span>
+                </div>
               </div>
             </div>
           ) : (
@@ -546,13 +664,13 @@ export const PredictionPage: React.FC<PredictionPageProps> = ({ course }) => {
                 <Calculator size={32} />
               </div>
               <div className="space-y-1">
-                <p className="font-serif text-lg font-bold text-[#17243B]">Ready for Prediction</p>
+                <p className="font-serif text-lg font-bold text-[#17243B]">Ready to Predict</p>
                 <p className="text-xs text-[#555866] max-w-xs mx-auto leading-relaxed">
-                  Select a preset student or adjust the form attributes on the left, then click <strong>"Predict Student Performance"</strong>.
+                  Pick a preset profile above or adjust the sliders, then click <strong>"Predict Student Performance"</strong>.
                 </p>
               </div>
               <div className="pt-2 text-[11px] text-[#828696] max-w-xs mx-auto">
-                All calculations execute against the local Scikit-Learn pipeline. Zero mocked statistics.
+                Powered by live Python FastAPI + Scikit-Learn backend.
               </div>
             </div>
           )}
