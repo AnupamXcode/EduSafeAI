@@ -425,7 +425,7 @@ export const RiskAnalysisPage: React.FC<RiskAnalysisPageProps> = ({ course }) =>
           <form onSubmit={handleRiskAssess} className="space-y-4">
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
               <div>
-                <label className="label-title">G1 Exam (0-20)</label>
+                <label className="label-title">Unit Test 1 (UT 1: 0-20)</label>
                 <input
                   type="number"
                   min="0"
@@ -438,7 +438,7 @@ export const RiskAnalysisPage: React.FC<RiskAnalysisPageProps> = ({ course }) =>
 
               {!earlyMode && (
                 <div>
-                  <label className="label-title">G2 Exam (0-20)</label>
+                  <label className="label-title">Unit Test 2 (UT 2: 0-20)</label>
                   <input
                     type="number"
                     min="0"

@@ -389,7 +389,7 @@ export const PerformancePage: React.FC<PerformancePageProps> = ({ course }) => {
           <form onSubmit={handlePredict} className="space-y-4">
             <div className="grid grid-cols-2 gap-3">
               <div>
-                <label className="label-title">Period 1 Grade (G1: 0-20)</label>
+                <label className="label-title">Unit Test 1 (UT 1: 0-20)</label>
                 <input
                   type="number"
                   min="0"
@@ -402,7 +402,7 @@ export const PerformancePage: React.FC<PerformancePageProps> = ({ course }) => {
 
               {!earlyMode && (
                 <div>
-                  <label className="label-title">Period 2 Grade (G2: 0-20)</label>
+                  <label className="label-title">Unit Test 2 (UT 2: 0-20)</label>
                   <input
                     type="number"
                     min="0"
