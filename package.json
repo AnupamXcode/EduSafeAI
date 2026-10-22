@@ -1,0 +1,24 @@
+{
+  "name": "edurisk-ai",
+  "version": "2.0.0",
+  "description": "Student Performance Prediction and Academic Risk Analytics System",
+  "private": true,
+  "scripts": {
+    "dev": "node dev.js",
+    "dev:frontend": "npm --prefix frontend run dev",
+    "dev:backend": "py -3.11 -m uvicorn app.main:app --app-dir backend --port 8000 --host 127.0.0.1",
+    "build": "npm --prefix frontend run build",
+    "test:api": "py -3.11 test_api.py",
+    "test:ml": "py -3.11 test_app.py"
+  },
+  "keywords": [
+    "machine-learning",
+    "academic-risk",
+    "fastapi",
+    "react",
+    "typescript",
+    "scikit-learn"
+  ],
+  "author": "EduRisk AI Research Team",
+  "license": "MIT"
+}

@@ -1,0 +1,41 @@
+{
+    "dataset_name": "UCI Student Performance (Math Course)",
+    "records": 395,
+    "attributes": 33,
+    "missing_values": 0,
+    "at_risk_count": 130,
+    "at_risk_percentage": 32.9,
+    "regression_results": {
+        "late_multiple_r2": 0.7241341236974022,
+        "late_multiple_rmse": 2.3783697847961367,
+        "early_multiple_r2": 0.5905065322134122,
+        "early_multiple_rmse": 2.8977030408460167
+    },
+    "classification_results": {
+        "logistic_regression_accuracy": 0.9393939393939394,
+        "logistic_regression_recall": 0.8787878787878788,
+        "logistic_regression_f1": 0.90625,
+        "logistic_regression_auc": 0.9775022956841138
+    },
+    "clustering_results": {
+        "kmeans_k3_silhouette": 0.11198505204065101,
+        "gmm_k3_aic": 7685.763956152474,
+        "gmm_k3_bic": 8935.134086331425
+    },
+    "ensemble_results": {
+        "decision_tree_f1": 0.8571428571428571,
+        "random_forest_f1": 0.8955223880597014,
+        "balanced_rf_f1": 0.8656716417910447
+    },
+    "tuning_results": {
+        "best_params": "{'clf__max_depth': None, 'clf__min_samples_split': 10, 'clf__n_estimators': 50}",
+        "test_accuracy": 0.9292929292929293,
+        "test_f1": 0.8955223880597014,
+        "test_recall": 0.9090909090909091,
+        "top_3_features": [
+            "G2",
+            "G1",
+            "failures"
+        ]
+    }
+}

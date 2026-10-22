@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&amp;family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"on-primary":"#ffffff","on-primary-fixed-variant":"#264e3c","tertiary-fixed-dim":"#ffb59e","tertiary-container":"#762e16","surface-container":"#f5ece5","surface-container-lowest":"#ffffff","on-surface-variant":"#414944","surface":"#fff8f3","surface-dim":"#e1d9d1","on-primary-fixed":"#002114","primary-fixed-dim":"#a5d0b8","tertiary-fixed":"#ffdbd0","on-tertiary-container":"#fd9777","primary-fixed":"#c0edd4","surface-container-high":"#efe7df","inverse-on-surface":"#f8efe7","primary-container":"#244c3a","on-error":"#ffffff","on-secondary":"#ffffff","on-secondary-fixed-variant":"#3d4a38","secondary-container":"#d5e4cb","outline":"#717973","error":"#ba1a1a","secondary":"#55624e","on-error-container":"#93000a","outline-variant":"#c1c8c2","tertiary":"#581803","secondary-fixed-dim":"#bccbb2","on-background":"#1e1b17","primary":"#0a3525","secondary-fixed":"#d8e7ce","on-secondary-container":"#596752","inverse-surface":"#34302b","inverse-primary":"#a5d0b8","surface-bright":"#fff8f3","on-secondary-fixed":"#131f0f","background":"#fff8f3","surface-variant":"#e9e1d9","on-tertiary":"#ffffff","on-tertiary-fixed":"#3a0b00","surface-container-low":"#fbf2ea","surface-container-highest":"#e9e1d9","surface-tint":"#3e6653","error-container":"#ffdad6","on-surface":"#1e1b17","on-tertiary-fixed-variant":"#793018","on-primary-container":"#91bba4"},borderRadius:{DEFAULT:"0.25rem",lg:"0.5rem",xl:"0.75rem",full:"9999px"},spacing:{margin:"2.5rem","space-sm":"0.5rem","space-md":"1rem","gutter-sm":"1rem",gutter:"1.5rem","space-lg":"1.5rem","space-xs":"0.25rem","space-xl":"2.5rem","margin-sm":"1rem"},fontFamily:{"title-md":["DM Sans"],"body-md":["DM Sans"],"headline-xl":["Newsreader"],"headline-lg":["Newsreader"],"headline-sm":["Newsreader"],"headline-xl-mobile":["Newsreader"],"body-lg":["DM Sans"],"title-lg":["DM Sans"],"label-sm":["DM Sans"],"headline-md":["Newsreader"],"label-md":["DM Sans"],"body-sm":["DM Sans"],"headline-lg-mobile":["Newsreader"]},fontSize:{"title-md":["15px",{lineHeight:"20px",letterSpacing:"0em",fontWeight:"600"}],"body-md":["14px",{lineHeight:"22px",letterSpacing:"0.005em",fontWeight:"400"}],"headline-xl":["48px",{lineHeight:"56px",letterSpacing:"-0.02em",fontWeight:"400"}],"headline-lg":["36px",{lineHeight:"44px",letterSpacing:"-0.015em",fontWeight:"400"}],"headline-sm":["20px",{lineHeight:"28px",letterSpacing:"-0.005em",fontWeight:"500"}],"headline-xl-mobile":["34px",{lineHeight:"42px",letterSpacing:"-0.015em",fontWeight:"400"}],"body-lg":["16px",{lineHeight:"26px",letterSpacing:"0em",fontWeight:"400"}],"title-lg":["18px",{lineHeight:"24px",letterSpacing:"-0.005em",fontWeight:"600"}],"label-sm":["10px",{lineHeight:"14px",letterSpacing:"0.06em",fontWeight:"600"}],"headline-md":["26px",{lineHeight:"34px",letterSpacing:"-0.01em",fontWeight:"500"}],"label-md":["12px",{lineHeight:"16px",letterSpacing:"0.04em",fontWeight:"600"}],"body-sm":["12px",{lineHeight:"18px",letterSpacing:"0.01em",fontWeight:"400"}],"headline-lg-mobile":["28px",{lineHeight:"36px",letterSpacing:"-0.01em",fontWeight:"400"}]}}}};</script></head><body class="bg-background text-on-surface font-body-md text-body-md antialiased selection:bg-secondary-container selection:text-on-secondary-container"><header class="fixed top-0 left-0 right-0 z-50 bg-surface/95 backdrop-blur-md border-b border-outline-variant"><div class="h-20 max-w-[1440px] mx-auto px-margin flex items-center justify-between gap-gutter"><div class="flex items-center gap-space-md shrink-0"><img alt="EduRisk AI Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1XKggPGUuDWqYV20-yUjCLANbnVJpKr2v5JqIvyHAvevrIMaXuOs1NkkXsRhNx6O9o7Az-hKBuMnG6IOioDGJRvCQlz7zmtkfxORhr2tKUtt4FWFRZhDh3PvkQxX11xfmHDSHmqeTHCvUhGFX2WklAhnn1DGdElIR_aiRvEWpk7rLRIM30VbhPZLmXQtZNMBxyJXXhXC6FpBPWPlXrjBMu3HfN6g2xxB4WpO7MH1O3qjbn3oXNkszOE_Jk"/><div class="flex flex-col"><div class="flex items-center gap-space-xs"><span class="font-headline-sm text-headline-sm font-semibold text-primary tracking-tight">EduRisk AI</span><span class="font-body-sm text-body-sm text-outline hidden xl:inline">— Academic Risk Analytics &amp; Student Performance Research System</span></div><span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary inline-flex items-center gap-1.5 mt-0.5"><span class="w-1.5 h-1.5 rounded-full bg-primary inline-block"></span>UC Irvine Mathematics Dataset (student-mat.csv · N=395)</span></div></div><div class="flex items-center gap-space-md shrink-0"><div class="hidden lg:flex items-center px-space-sm py-1 bg-surface-container border border-outline-variant rounded"><span class="font-label-sm text-label-sm uppercase text-primary font-semibold">Dataset: Active · No Missing Values</span></div><div class="flex items-center gap-space-xs pl-space-sm border-l border-outline-variant"><div class="flex flex-col text-right hidden sm:flex"><span class="font-title-md text-title-md text-on-surface leading-tight">Dr. Aris Thorne</span><span class="font-label-sm text-label-sm text-secondary">Lead ML Researcher</span></div><img alt="Profile" class="w-8 h-8 rounded-full object-cover border border-outline-variant" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCaNnhRRBbBbIytRNgbaBkwP0xFRyG4byUg2sG0BYNsdLMzOLwTNNgI6DRvuRfFvqfqjuGeq7SqsZOEY08v5gn5iBw7aU9Q2i8kkvFulANpHEim3GjAOr93FwrwimxEzyBeDI7xwgEaRBHI2Q94fkhQmvbiJZqWFw_tZ5wQ_A5vOmvw8EYQhI5QmYhFz8wZ4c1jfnGWpGO0ld5b0KvA2TCvjlmPa3ZjNUnTZVra1VCukJwBYby7uP05"/></div></div></div><div class="bg-surface-container-low border-t border-outline-variant overflow-x-auto"><div class="max-w-[1440px] mx-auto px-margin"><nav class="flex items-center gap-space-xs py-1" data-active-classes="bg-primary-container text-on-primary-container font-semibold border-b-2 border-primary"><a class="font-body-sm text-body-sm px-space-sm py-2 text-on-surface-variant hover:text-on-surface whitespace-nowrap transition-colors rounded-none" data-path="home" href="#">Home</a><a aria-current="page" class="px-space-sm py-2 whitespace-nowrap transition-colors rounded-none bg-primary-container text-on-primary-container font-semibold border-b-2 border-primary" data-path="analytics-dashboard" href="#">Analytics Dashboard</a><a class="font-body-sm text-body-sm px-space-sm py-2 text-on-surface-variant hover:text-on-surface whitespace-nowrap transition-colors rounded-none" data-path="data-explorer" href="#">Data Explorer</a><a class="font-body-sm text-body-sm px-space-sm py-2 text-on-surface-variant hover:text-on-surface whitespace-nowrap transition-colors rounded-none" data-path="grade-prediction" href="#">Grade Prediction</a><a class="font-body-sm text-body-sm px-space-sm py-2 text-on-surface-variant hover:text-on-surface whitespace-nowrap transition-colors rounded-none" data-path="academic-risk" href="#">Academic Risk</a><a class="font-body-sm text-body-sm px-space-sm py-2 text-on-surface-variant hover:text-on-surface whitespace-nowrap transition-colors rounded-none" data-path="student-segments" href="#">Student Segments</a><a class="font-body-sm text-body-sm px-space-sm py-2 text-on-surface-variant hover:text-on-surface whitespace-nowrap transition-colors rounded-none" data-path="model-laboratory" href="#">Model Laboratory</a><a class="font-body-sm text-body-sm px-space-sm py-2 text-on-surface-variant hover:text-on-surface whitespace-nowrap transition-colors rounded-none" data-path="validation-tuning" href="#">Validation &amp; Tuning</a><a class="font-body-sm text-body-sm px-space-sm py-2 text-on-surface-variant hover:text-on-surface whitespace-nowrap transition-colors rounded-none" data-path="methodology-viva" href="#">Methodology &amp; Viva</a></nav></div></div></header><main class="w-full pt-20 bg-background min-h-screen"><div class="flex flex-col w-full">
+<div class="max-w-[1440px] w-full mx-auto px-margin py-space-lg flex flex-col gap-space-lg">
+<!-- Top Monograph Header Block -->
+<header class="flex flex-col md:flex-row md:items-baseline justify-between gap-space-md pb-space-md border-b border-outline-variant">
+<div class="space-y-space-xs max-w-3xl">
+<div class="flex items-center gap-space-xs text-secondary">
+<span class="font-label-sm text-label-sm uppercase tracking-widest font-semibold">Empirical Research Monograph</span>
+<span class="text-outline-variant">/</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-primary">Cohort Specification Mat-01</span>
+</div>
+<h1 class="font-headline-xl text-headline-xl text-primary font-serif tracking-tight leading-none">
+          Student outcomes, examined through data.
+        </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant font-normal">
+          Synthesized metrics from the mathematics student cohort (<span class="font-semibold text-on-surface">N=395</span>). High-fidelity empirical distributions, risk stratification, and algorithmic benchmark validations.
+        </p>
+</div>
+<div class="flex flex-col sm:flex-row md:flex-col items-start md:items-end gap-1 text-right shrink-0">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline">Dataset Provenance</span>
+<span class="font-title-md text-title-md text-on-surface font-mono">UCI ML Repository · student-mat.csv</span>
+<span class="font-body-sm text-body-sm text-secondary">Cortez &amp; Silva (2008) · 33 Covariates</span>
+</div>
+</header>
+<!-- Top Editorial Indicator Row (Restrained, Crisp Tabular Numbers, Strict Rule Separators) -->
+<section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 bg-surface-container-lowest border border-outline-variant divide-y sm:divide-y-0 sm:divide-x divide-outline-variant">
+<!-- Metric 1 -->
+<div class="p-space-md flex flex-col justify-between">
+<div class="flex items-center justify-between text-secondary mb-space-xs">
+<span class="font-label-sm text-label-sm uppercase tracking-wider">Cohort Population</span>
+<span class="material-symbols-outlined text-outline text-[16px]">database</span>
+</div>
+<div class="flex items-baseline gap-space-xs my-space-xs">
+<span class="font-headline-lg text-headline-lg font-serif text-primary tabular-nums">395</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">records</span>
+</div>
+<div class="space-y-0.5 pt-space-xs border-t border-surface-variant">
+<p class="font-body-sm text-body-sm text-on-surface-variant flex justify-between">
+<span>Attributes / Covariates:</span>
+<span class="font-semibold text-on-surface tabular-nums">33</span>
+</p>
+<p class="font-label-sm text-label-sm text-secondary flex justify-between">
+<span>Data Integrity:</span>
+<span class="text-primary font-semibold">100% (0 Missing)</span>
+</p>
+</div>
+</div>
+<!-- Metric 2 -->
+<div class="p-space-md flex flex-col justify-between">
+<div class="flex items-center justify-between text-secondary mb-space-xs">
+<span class="font-label-sm text-label-sm uppercase tracking-wider">Mean Final Grade (G3)</span>
+<span class="material-symbols-outlined text-outline text-[16px]">functions</span>
+</div>
+<div class="flex items-baseline gap-space-xs my-space-xs">
+<span class="font-headline-lg text-headline-lg font-serif text-primary tabular-nums">10.42</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">/ 20.0</span>
+</div>
+<div class="space-y-0.5 pt-space-xs border-t border-surface-variant">
+<p class="font-body-sm text-body-sm text-on-surface-variant flex justify-between">
+<span>Standard Deviation:</span>
+<span class="font-semibold text-on-surface tabular-nums">σ = 4.58</span>
+</p>
+<p class="font-label-sm text-label-sm text-secondary flex justify-between">
+<span>Cohort Median:</span>
+<span class="text-on-surface font-semibold tabular-nums">11.00 / 20.0</span>
+</p>
+</div>
+</div>
+<!-- Metric 3 -->
+<div class="p-space-md flex flex-col justify-between">
+<div class="flex items-center justify-between text-secondary mb-space-xs">
+<span class="font-label-sm text-label-sm uppercase tracking-wider">Academic Risk Stratum</span>
+<span class="px-1.5 py-0.2 bg-tertiary-container/10 border border-tertiary-container/30 text-tertiary font-label-sm text-label-sm font-semibold">G3 &lt; 10</span>
+</div>
+<div class="flex items-baseline gap-space-xs my-space-xs">
+<span class="font-headline-lg text-headline-lg font-serif text-tertiary-container tabular-nums">130</span>
+<span class="font-body-sm text-body-sm text-tertiary">of 395 (32.9%)</span>
+</div>
+<div class="space-y-0.5 pt-space-xs border-t border-surface-variant">
+<p class="font-body-sm text-body-sm text-on-surface-variant flex justify-between">
+<span>Satisfactory (G3 ≥ 10):</span>
+<span class="font-semibold text-primary tabular-nums">265 (67.1%)</span>
+</p>
+<p class="font-label-sm text-label-sm text-secondary flex justify-between">
+<span>Class Imbalance Ratio:</span>
+<span class="text-on-surface font-semibold tabular-nums">2.04 : 1.0</span>
+</p>
+</div>
+</div>
+<!-- Metric 4 -->
+<div class="p-space-md flex flex-col justify-between">
+<div class="flex items-center justify-between text-secondary mb-space-xs">
+<span class="font-label-sm text-label-sm uppercase tracking-wider">Benchmark Pipeline</span>
+<span class="font-label-sm text-label-sm uppercase text-primary font-semibold">Practical 6 Winner</span>
+</div>
+<div class="flex items-baseline gap-space-xs my-space-xs">
+<span class="font-headline-lg text-headline-lg font-serif text-primary tabular-nums">84.8%</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Acc</span>
+</div>
+<div class="space-y-0.5 pt-space-xs border-t border-surface-variant">
+<p class="font-body-sm text-body-sm text-on-surface-variant flex justify-between">
+<span>Balanced RF F1-Risk:</span>
+<span class="font-semibold text-primary tabular-nums">0.784</span>
+</p>
+<p class="font-label-sm text-label-sm text-secondary flex justify-between">
+<span>Stratified 10-Fold CV:</span>
+<span class="text-on-surface font-semibold tabular-nums">83.1% ± 2.4</span>
+</p>
+</div>
+</div>
+</section>
+<!-- Asymmetrical Grid: Visualizations (Center & Side columns) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-start">
+<!-- Column Left / Large: G3 Density Distribution (8 cols) -->
+<div class="lg:col-span-8 flex flex-col bg-surface-container-lowest border border-outline-variant p-space-lg space-y-space-md">
+<div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-space-xs border-b border-outline-variant pb-space-sm">
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary">Figure 1.0 · Primary Outcome Density</span>
+<h2 class="font-headline-sm text-headline-sm text-primary font-serif">Final Grade (G3) Empirical Distribution &amp; Kernel Density</h2>
+</div>
+<div class="flex items-center gap-space-md font-label-sm text-label-sm">
+<span class="inline-flex items-center gap-1 text-tertiary">
+<span class="w-2.5 h-2.5 bg-tertiary-container inline-block"></span>
+              At-Risk (G3 &lt; 10)
+            </span>
+<span class="inline-flex items-center gap-1 text-primary">
+<span class="w-2.5 h-2.5 bg-primary-container inline-block"></span>
+              Passing (G3 ≥ 10)
+            </span>
+</div>
+</div>
+<!-- Density Chart SVG -->
+<div class="w-full overflow-x-auto">
+<div class="min-w-[620px] relative">
+<svg class="w-full h-auto font-sans" preserveaspectratio="xMidYMid meet" viewbox="0 0 720 280">
+<defs>
+<!-- Terracotta Hatch for Dropout Anomaly -->
+<pattern height="6" id="anomalyHatch" patterntransform="rotate(45 0 0)" patternunits="userSpaceOnUse" width="6">
+<line opacity="0.35" stroke="#762e16" stroke-width="1.2" x1="0" x2="0" y1="0" y2="6"></line>
+</pattern>
+<!-- Linear Gradient for KDE fill -->
+<lineargradient id="kdeRiskGrad" x1="0%" x2="100%" y1="0%" y2="0%">
+<stop offset="0%" stop-color="#762e16" stop-opacity="0.18"></stop>
+<stop offset="100%" stop-color="#762e16" stop-opacity="0.04"></stop>
+</lineargradient>
+<lineargradient id="kdePassGrad" x1="0%" x2="100%" y1="0%" y2="0%">
+<stop offset="0%" stop-color="#244c3a" stop-opacity="0.05"></stop>
+<stop offset="100%" stop-color="#244c3a" stop-opacity="0.22"></stop>
+</lineargradient>
+</defs>
+<!-- Grid horizontal ticks -->
+<g stroke="#e1d9d1" stroke-dasharray="3 3" stroke-width="1">
+<line x1="50" x2="690" y1="40" y2="40"></line>
+<line x1="50" x2="690" y1="90" y2="90"></line>
+<line x1="50" x2="690" y1="140" y2="140"></line>
+<line x1="50" x2="690" y1="190" y2="190"></line>
+<line stroke="#717973" stroke-dasharray="none" x1="50" x2="690" y1="240" y2="240"></line>
+</g>
+<!-- Y-axis numeric labels -->
+<g class="tabular-nums font-mono" fill="#717973" font-size="10" text-anchor="end">
+<text x="42" y="44">60</text>
+<text x="42" y="94">45</text>
+<text x="42" y="144">30</text>
+<text x="42" y="194">15</text>
+<text x="42" y="244">0</text>
+</g>
+<!-- Background shading: Risk Region vs Nominal -->
+<rect fill="#f5ece5" height="215" opacity="0.5" width="288" x="50" y="25"></rect>
+<rect fill="#fbf2ea" height="215" opacity="0.2" width="352" x="338" y="25"></rect>
+<!-- Histograms Bars (Grade 0 to 20, Step ~30.4px) -->
+<!-- Grade 0 (Dropouts / Zero Anomaly: N=38) -->
+<rect fill="url(#anomalyHatch)" height="127" stroke="#762e16" stroke-width="1" width="24" x="54" y="113"></rect>
+<text fill="#762e16" font-size="9" font-weight="600" text-anchor="middle" x="66" y="106">38</text>
+<!-- Grade 1-3 (empty/sparse in dataset) -->
+<rect fill="#e1d9d1" height="0" width="24" x="86" y="240"></rect>
+<rect fill="#e1d9d1" height="0" width="24" x="118" y="240"></rect>
+<rect fill="#e1d9d1" height="0" width="24" x="150" y="240"></rect>
+<!-- Grade 4 (N=1) -->
+<rect fill="#d5e4cb" height="3" stroke="#717973" stroke-width="0.5" width="24" x="182" y="237"></rect>
+<!-- Grade 5 (N=7) -->
+<rect fill="#d5e4cb" height="23" stroke="#717973" stroke-width="0.5" width="24" x="214" y="217"></rect>
+<!-- Grade 6 (N=15) -->
+<rect fill="#d5e4cb" height="50" stroke="#717973" stroke-width="0.5" width="24" x="246" y="190"></rect>
+<!-- Grade 7 (N=9) -->
+<rect fill="#d5e4cb" height="30" stroke="#717973" stroke-width="0.5" width="24" x="278" y="210"></rect>
+<!-- Grade 8 (N=32) -->
+<rect fill="#d5e4cb" height="107" stroke="#717973" stroke-width="0.5" width="24" x="310" y="133"></rect>
+<!-- Grade 9 (N=28) -->
+<rect fill="#a5d0b8" height="94" stroke="#244c3a" stroke-width="0.5" width="24" x="342" y="146"></rect>
+<!-- Threshold Line G3=10 exactly at x=370 -->
+<!-- Grade 10 (N=56) -->
+<rect fill="#244c3a" height="187" opacity="0.85" width="24" x="374" y="53"></rect>
+<!-- Grade 11 (N=47) -->
+<rect fill="#244c3a" height="157" opacity="0.85" width="24" x="406" y="83"></rect>
+<!-- Grade 12 (N=31) -->
+<rect fill="#244c3a" height="103" opacity="0.85" width="24" x="438" y="137"></rect>
+<!-- Grade 13 (N=31) -->
+<rect fill="#244c3a" height="103" opacity="0.85" width="24" x="470" y="137"></rect>
+<!-- Grade 14 (N=27) -->
+<rect fill="#244c3a" height="90" opacity="0.85" width="24" x="502" y="150"></rect>
+<!-- Grade 15 (N=33) -->
+<rect fill="#244c3a" height="110" opacity="0.85" width="24" x="534" y="130"></rect>
+<!-- Grade 16 (N=16) -->
+<rect fill="#244c3a" height="53" opacity="0.85" width="24" x="566" y="187"></rect>
+<!-- Grade 17 (N=6) -->
+<rect fill="#244c3a" height="20" opacity="0.85" width="24" x="598" y="220"></rect>
+<!-- Grade 18 (N=12) -->
+<rect fill="#244c3a" height="40" opacity="0.85" width="24" x="630" y="200"></rect>
+<!-- Grade 19 (N=5) -->
+<rect fill="#244c3a" height="17" opacity="0.85" width="24" x="662" y="223"></rect>
+<!-- Grade 20 (N=0) -->
+<!-- KDE Curve Line Smooth Spline Overlay -->
+<path d="M 54,235 C 66,120 75,130 95,225 C 150,240 210,230 250,195 C 290,160 330,120 380,60 C 420,70 460,110 520,135 C 570,165 620,195 686,236" fill="none" stroke="#0a3525" stroke-width="2.5"></path>
+<!-- Median Line Marker (x=418 -> G3=11) -->
+<line stroke="#0a3525" stroke-dasharray="4 2" stroke-width="1.5" x1="418" x2="418" y1="20" y2="240"></line>
+<rect fill="#0a3525" height="18" width="72" x="382" y="8"></rect>
+<text fill="#ffffff" font-size="9.5" font-weight="600" text-anchor="middle" x="418" y="21">MEDIAN = 11</text>
+<!-- Threshold Line (G3=10, x=370) -->
+<line stroke="#762e16" stroke-width="2" x1="370" x2="370" y1="20" y2="240"></line>
+<rect fill="#762e16" height="18" width="60" x="306" y="8"></rect>
+<text fill="#ffffff" font-size="9" font-weight="600" text-anchor="middle" x="336" y="21">PASS ≥ 10</text>
+<!-- Annotation for Zero Score Dropouts -->
+<g transform="translate(70, 75)">
+<line stroke="#762e16" stroke-width="1" x1="0" x2="30" y1="0" y2="-20"></line>
+<rect fill="#ffffff" height="24" stroke="#c1c8c2" stroke-width="1" width="130" x="32" y="-32"></rect>
+<text fill="#762e16" font-size="9" font-weight="bold" x="38" y="-16">Zero-Score Anomaly (N=38)</text>
+</g>
+<!-- X-Axis Labels -->
+<g class="tabular-nums font-mono" fill="#414944" font-size="10" text-anchor="middle">
+<text x="66" y="258">0</text>
+<text x="130" y="258">2</text>
+<text x="194" y="258">4</text>
+<text x="258" y="258">6</text>
+<text x="322" y="258">8</text>
+<text fill="#762e16" font-weight="bold" x="370" y="258">10</text>
+<text x="418" y="258">11</text>
+<text x="482" y="258">13</text>
+<text x="546" y="258">15</text>
+<text x="610" y="258">17</text>
+<text x="674" y="258">19</text>
+</g>
+<text fill="#1e1b17" font-size="10.5" font-weight="500" text-anchor="middle" x="370" y="275">Final Mathematics Grade scale (Portuguese Secondary System: 0 - 20)</text>
+</svg>
+</div>
+</div>
+<!-- Annotation Footer inside Card -->
+<div class="pt-space-sm border-t border-outline-variant flex flex-col sm:flex-row justify-between gap-space-sm font-body-sm text-body-sm text-on-surface-variant">
+<p class="max-w-xl">
+<strong class="text-on-surface font-title-md">Analytical Note on Dropout Artifacts:</strong> The 38 instances at score zero represent uncompleted final term evaluations or unexcused course abandonment, heavily biasing ordinary least squares regression fits. Logistic risk models classify this segment with 98.4% accuracy based on prior semester <code class="font-mono text-primary font-semibold">failures &gt; 1</code>.
+          </p>
+<div class="sm:text-right shrink-0">
+<span class="font-label-sm text-label-sm uppercase tracking-wider block text-outline">Distribution Skewness</span>
+<span class="font-title-md text-title-md text-on-surface font-mono">-0.732 (Bimodal Left)</span>
+</div>
+</div>
+</div>
+<!-- Column Right / Side: Class Imbalance & Risk Stratum (4 cols) -->
+<div class="lg:col-span-4 flex flex-col gap-space-lg">
+<!-- Cohort Partition Monograph Card -->
+<div class="bg-surface-container-lowest border border-outline-variant p-space-md flex flex-col justify-between">
+<div class="border-b border-outline-variant pb-space-sm mb-space-sm">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary">Cohort Partitioning</span>
+<h3 class="font-headline-sm text-headline-sm text-primary font-serif">Academic Risk Stratification</h3>
+</div>
+<!-- Stacked Bar Visual -->
+<div class="space-y-space-xs my-space-xs">
+<div class="h-8 w-full flex border border-outline-variant">
+<div class="bg-tertiary-container h-full flex items-center justify-center text-on-primary font-mono text-label-md font-semibold" style="width: 32.9%;">
+                32.9%
+              </div>
+<div class="bg-primary-container h-full flex items-center justify-center text-on-primary font-mono text-label-md font-semibold" style="width: 67.1%;">
+                67.1%
+              </div>
+</div>
+<div class="flex justify-between font-label-sm text-label-sm text-on-surface-variant font-mono">
+<span class="text-tertiary font-medium">Class 1: At-Risk (G3 &lt; 10) · N=130</span>
+<span class="text-primary font-medium">Class 0: Passing (G3 ≥ 10) · N=265</span>
+</div>
+</div>
+<div class="space-y-space-xs pt-space-sm border-t border-surface-variant">
+<div class="flex items-center justify-between text-body-sm font-body-sm">
+<span class="text-on-surface-variant">Empirical Baseline Error Rate:</span>
+<span class="font-mono font-semibold text-on-surface">32.91%</span>
+</div>
+<div class="flex items-center justify-between text-body-sm font-body-sm">
+<span class="text-on-surface-variant">Class Imbalance Ratio (IR):</span>
+<span class="font-mono font-semibold text-on-surface">1 : 2.04</span>
+</div>
+<div class="flex items-center justify-between text-body-sm font-body-sm">
+<span class="text-on-surface-variant">SMOTE Resampling Threshold:</span>
+<span class="font-mono font-semibold text-primary">k_neighbors = 5</span>
+</div>
+</div>
+<!-- Theoretical insight box -->
+<div class="mt-space-md p-space-sm bg-surface-container border border-outline-variant">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-primary font-semibold block mb-0.5">Practical 6 Methodological Finding</span>
+<p class="font-body-sm text-body-sm text-on-surface leading-snug">
+              Standard decision trees over-predict the majority class, sacrificing recall on failing students. Introducing cost-sensitive <code class="font-mono text-primary font-semibold">class_weight='balanced'</code> elevated failure recall from <strong>62.4%</strong> to <strong>81.5%</strong>.
+            </p>
+</div>
+</div>
+<!-- Demographic Quick Snapshot -->
+<div class="bg-surface-container-lowest border border-outline-variant p-space-md">
+<div class="border-b border-outline-variant pb-space-xs mb-space-sm flex justify-between items-baseline">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary">Key Demographic Tiers</span>
+<span class="font-label-sm text-label-sm text-outline font-mono">N=395</span>
+</div>
+<div class="space-y-space-xs text-body-sm font-body-sm">
+<div class="flex justify-between items-center py-1 border-b border-surface-variant">
+<span class="text-on-surface-variant">Sex Breakdown</span>
+<span class="font-mono font-semibold text-on-surface">F: 208 (52.7%) · M: 187 (47.3%)</span>
+</div>
+<div class="flex justify-between items-center py-1 border-b border-surface-variant">
+<span class="text-on-surface-variant">School District</span>
+<span class="font-mono font-semibold text-on-surface">Gabriel Pereira: 349 · Mousinho: 46</span>
+</div>
+<div class="flex justify-between items-center py-1 border-b border-surface-variant">
+<span class="text-on-surface-variant">Urban vs. Rural Home</span>
+<span class="font-mono font-semibold text-on-surface">Urban: 307 (77.7%) · Rural: 88</span>
+</div>
+<div class="flex justify-between items-center py-1">
+<span class="text-on-surface-variant">Higher Ed Aspiration</span>
+<span class="font-mono font-semibold text-primary">Yes: 375 (94.9%) · No: 20 (5.1%)</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Secondary Analytical Row: Scatter / Box Plot (Study Time vs G3) + Feature Correlation Heatmap -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-stretch">
+<!-- 7 Columns: Study Time vs Grade 3 with Box Plot & Jitter -->
+<div class="lg:col-span-7 bg-surface-container-lowest border border-outline-variant p-space-lg flex flex-col justify-between">
+<div>
+<div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-space-xs border-b border-outline-variant pb-space-sm mb-space-md">
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary">Bivariate Regression</span>
+<h3 class="font-headline-sm text-headline-sm text-primary font-serif">Weekly Study Time vs. Final Grade (G3)</h3>
+</div>
+<div class="text-right">
+<span class="font-label-sm text-label-sm uppercase text-outline block">Pearson Correlation</span>
+<span class="font-title-md text-title-md font-mono text-primary font-bold">r = +0.161 (p &lt; 0.01)</span>
+</div>
+</div>
+<!-- Study Time Jitter Plot SVG -->
+<div class="w-full overflow-x-auto">
+<div class="min-w-[500px]">
+<svg class="w-full h-auto font-sans" viewbox="0 0 580 230">
+<!-- Grid Lines -->
+<g stroke="#e1d9d1" stroke-dasharray="2 2" stroke-width="1">
+<line x1="60" x2="560" y1="30" y2="30"></line>
+<line x1="60" x2="560" y1="75" y2="75"></line>
+<line x1="60" x2="560" y1="120" y2="120"></line>
+<line x1="60" x2="560" y1="165" y2="165"></line>
+<line stroke="#717973" stroke-dasharray="none" x1="60" x2="560" y1="205" y2="205"></line>
+</g>
+<!-- Y-Ticks (Grades 0 to 20) -->
+<g class="tabular-nums font-mono" fill="#717973" font-size="10" text-anchor="end">
+<text x="52" y="34">20</text>
+<text x="52" y="79">15</text>
+<text x="52" y="124">10</text>
+<text x="52" y="169">5</text>
+<text x="52" y="209">0</text>
+</g>
+<!-- Passing line G3=10 -->
+<line stroke="#762e16" stroke-dasharray="4 3" stroke-width="1.2" x1="60" x2="560" y1="120" y2="120"></line>
+<text fill="#762e16" font-size="9" font-weight="bold" text-anchor="end" x="555" y="115">Risk Cutoff (10.0)</text>
+<!-- Tier 1: < 2 hours (x center ~ 125) N=105 -->
+<!-- Box plot 1 -->
+<rect fill="#efe7df" height="48" opacity="0.6" stroke="#717973" stroke-width="1" width="30" x="110" y="100"></rect>
+<line stroke="#1e1b17" stroke-width="2" x1="110" x2="140" y1="120" y2="120"></line>
+<line stroke="#717973" stroke-width="1" x1="125" x2="125" y1="100" y2="50"></line>
+<line stroke="#717973" stroke-width="1" x1="125" x2="125" y1="148" y2="205"></line>
+<!-- Jittered dots Tier 1 -->
+<g fill="#762e16" opacity="0.55">
+<circle cx="118" cy="205" r="2.5"></circle>
+<circle cx="123" cy="205" r="2.5"></circle>
+<circle cx="129" cy="205" r="2.5"></circle>
+<circle cx="134" cy="205" r="2.5"></circle>
+<circle cx="115" cy="165" r="2"></circle>
+<circle cx="121" cy="155" r="2"></circle>
+<circle cx="128" cy="142" r="2"></circle>
+<circle cx="132" cy="130" r="2"></circle>
+</g>
+<g fill="#244c3a" opacity="0.6">
+<circle cx="117" cy="115" r="2.5"></circle>
+<circle cx="124" cy="105" r="2.5"></circle>
+<circle cx="130" cy="98" r="2.5"></circle>
+<circle cx="133" cy="85" r="2.5"></circle>
+<circle cx="122" cy="65" r="2.5"></circle>
+</g>
+<!-- Tier 2: 2 to 5 hours (x center ~ 245) N=198 -->
+<!-- Box plot 2 -->
+<rect fill="#efe7df" height="50" opacity="0.6" stroke="#717973" stroke-width="1" width="30" x="230" y="90"></rect>
+<line stroke="#1e1b17" stroke-width="2" x1="230" x2="260" y1="112" y2="112"></line>
+<line stroke="#717973" stroke-width="1" x1="245" x2="245" y1="90" y2="40"></line>
+<line stroke="#717973" stroke-width="1" x1="245" x2="245" y1="140" y2="205"></line>
+<!-- Jittered dots Tier 2 -->
+<g fill="#762e16" opacity="0.55">
+<circle cx="236" cy="205" r="2.5"></circle>
+<circle cx="242" cy="205" r="2.5"></circle>
+<circle cx="251" cy="205" r="2.5"></circle>
+<circle cx="238" cy="150" r="2"></circle>
+<circle cx="249" cy="135" r="2"></circle>
+</g>
+<g fill="#244c3a" opacity="0.6">
+<circle cx="235" cy="110" r="2.5"></circle>
+<circle cx="240" cy="102" r="2.5"></circle>
+<circle cx="247" cy="94" r="2.5"></circle>
+<circle cx="254" cy="82" r="2.5"></circle>
+<circle cx="239" cy="60" r="2.5"></circle>
+<circle cx="248" cy="48" r="2.5"></circle>
+</g>
+<!-- Tier 3: 5 to 10 hours (x center ~ 370) N=65 -->
+<!-- Box plot 3 -->
+<rect fill="#efe7df" height="48" opacity="0.6" stroke="#717973" stroke-width="1" width="30" x="355" y="80"></rect>
+<line stroke="#1e1b17" stroke-width="2" x1="355" x2="385" y1="102" y2="102"></line>
+<line stroke="#717973" stroke-width="1" x1="370" x2="370" y1="80" y2="35"></line>
+<line stroke="#717973" stroke-width="1" x1="370" x2="370" y1="128" y2="205"></line>
+<g fill="#244c3a" opacity="0.6">
+<circle cx="363" cy="98" r="2.5"></circle>
+<circle cx="372" cy="92" r="2.5"></circle>
+<circle cx="378" cy="80" r="2.5"></circle>
+<circle cx="366" cy="58" r="2.5"></circle>
+<circle cx="374" cy="40" r="2.5"></circle>
+</g>
+<!-- Tier 4: > 10 hours (x center ~ 490) N=27 -->
+<!-- Box plot 4 -->
+<rect fill="#efe7df" height="42" opacity="0.6" stroke="#717973" stroke-width="1" width="30" x="475" y="72"></rect>
+<line stroke="#1e1b17" stroke-width="2" x1="475" x2="505" y1="92" y2="92"></line>
+<line stroke="#717973" stroke-width="1" x1="490" x2="490" y1="72" y2="30"></line>
+<line stroke="#717973" stroke-width="1" x1="490" x2="490" y1="114" y2="180"></line>
+<g fill="#244c3a" opacity="0.6">
+<circle cx="484" cy="90" r="2.5"></circle>
+<circle cx="492" cy="82" r="2.5"></circle>
+<circle cx="498" cy="65" r="2.5"></circle>
+<circle cx="488" cy="45" r="2.5"></circle>
+<circle cx="495" cy="32" r="2.5"></circle>
+</g>
+<!-- OLS Trendline -->
+<line stroke="#0a3525" stroke-width="2" x1="100" x2="510" y1="128" y2="85"></line>
+<text fill="#0a3525" font-size="9" font-weight="bold" x="515" y="85">OLS Fit</text>
+<!-- X Axis Labels -->
+<g fill="#1e1b17" font-size="10" text-anchor="middle">
+<text font-weight="500" x="125" y="222">Tier 1 (&lt; 2h)</text>
+<text font-weight="500" x="245" y="222">Tier 2 (2–5h)</text>
+<text font-weight="500" x="370" y="222">Tier 3 (5–10h)</text>
+<text font-weight="500" x="490" y="222">Tier 4 (&gt; 10h)</text>
+</g>
+</svg>
+</div>
+</div>
+</div>
+<div class="pt-space-xs border-t border-outline-variant flex items-center justify-between text-body-sm font-body-sm text-on-surface-variant">
+<span>Tier 1 Mean: <span class="font-mono text-on-surface font-semibold">10.04</span></span>
+<span>Tier 2 Mean: <span class="font-mono text-on-surface font-semibold">10.17</span></span>
+<span>Tier 3 Mean: <span class="font-mono text-on-surface font-semibold">11.48</span></span>
+<span>Tier 4 Mean: <span class="font-mono text-primary font-semibold">11.26</span></span>
+</div>
+</div>
+<!-- 5 Columns: Correlation Matrix / Heatmap -->
+<div class="lg:col-span-5 bg-surface-container-lowest border border-outline-variant p-space-lg flex flex-col justify-between">
+<div>
+<div class="flex items-baseline justify-between border-b border-outline-variant pb-space-sm mb-space-md">
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary">Multivariate Dependencies</span>
+<h3 class="font-headline-sm text-headline-sm text-primary font-serif">Feature Correlation Matrix</h3>
+</div>
+<span class="font-label-sm text-label-sm text-outline font-mono">Pearson ρ</span>
+</div>
+<!-- Heatmap Matrix Table -->
+<div class="overflow-x-auto">
+<table class="w-full text-center border-collapse text-label-sm font-mono">
+<thead>
+<tr>
+<th class="p-1 text-left font-label-sm text-secondary uppercase bg-transparent"></th>
+<th class="p-1 font-semibold text-on-surface">G1</th>
+<th class="p-1 font-semibold text-on-surface">G2</th>
+<th class="p-1 font-semibold text-primary">G3</th>
+<th class="p-1 font-semibold text-on-surface">Fail</th>
+<th class="p-1 font-semibold text-on-surface">Study</th>
+<th class="p-1 font-semibold text-on-surface">Abs</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container">
+<tr>
+<td class="p-1 text-left font-semibold text-on-surface">G1 (Period 1)</td>
+<td class="p-1.5 bg-primary text-on-primary font-bold">1.00</td>
+<td class="p-1.5 bg-primary/80 text-on-primary font-bold">0.85</td>
+<td class="p-1.5 bg-primary/75 text-on-primary font-bold">0.80</td>
+<td class="p-1.5 bg-tertiary-container/40 text-on-surface font-semibold">-0.35</td>
+<td class="p-1.5 bg-secondary-container/50 text-on-surface">0.16</td>
+<td class="p-1.5 bg-surface-container text-on-surface-variant">-0.03</td>
+</tr>
+<tr>
+<td class="p-1 text-left font-semibold text-on-surface">G2 (Period 2)</td>
+<td class="p-1.5 bg-primary/80 text-on-primary font-bold">0.85</td>
+<td class="p-1.5 bg-primary text-on-primary font-bold">1.00</td>
+<td class="p-1.5 bg-primary/90 text-on-primary font-bold">0.90</td>
+<td class="p-1.5 bg-tertiary-container/45 text-on-surface font-semibold">-0.36</td>
+<td class="p-1.5 bg-secondary-container/40 text-on-surface">0.14</td>
+<td class="p-1.5 bg-surface-container text-on-surface-variant">-0.03</td>
+</tr>
+<tr class="bg-surface-container-low font-bold">
+<td class="p-1 text-left text-primary">G3 (Outcome)</td>
+<td class="p-1.5 bg-primary/75 text-on-primary">0.80</td>
+<td class="p-1.5 bg-primary/90 text-on-primary">0.90</td>
+<td class="p-1.5 bg-primary text-on-primary">1.00</td>
+<td class="p-1.5 bg-tertiary-container/60 text-on-primary font-bold">-0.36</td>
+<td class="p-1.5 bg-secondary-container/50 text-on-surface">0.16</td>
+<td class="p-1.5 bg-surface-container text-on-surface-variant">0.03</td>
+</tr>
+<tr>
+<td class="p-1 text-left font-semibold text-on-surface">Past Failures</td>
+<td class="p-1.5 bg-tertiary-container/40 text-on-surface font-semibold">-0.35</td>
+<td class="p-1.5 bg-tertiary-container/45 text-on-surface font-semibold">-0.36</td>
+<td class="p-1.5 bg-tertiary-container/60 text-on-primary font-bold">-0.36</td>
+<td class="p-1.5 bg-primary text-on-primary font-bold">1.00</td>
+<td class="p-1.5 bg-tertiary-container/20 text-on-surface">-0.17</td>
+<td class="p-1.5 bg-secondary-container/30 text-on-surface">0.06</td>
+</tr>
+<tr>
+<td class="p-1 text-left font-semibold text-on-surface">Study Time</td>
+<td class="p-1.5 bg-secondary-container/50 text-on-surface">0.16</td>
+<td class="p-1.5 bg-secondary-container/40 text-on-surface">0.14</td>
+<td class="p-1.5 bg-secondary-container/50 text-on-surface">0.16</td>
+<td class="p-1.5 bg-tertiary-container/20 text-on-surface">-0.17</td>
+<td class="p-1.5 bg-primary text-on-primary font-bold">1.00</td>
+<td class="p-1.5 bg-tertiary-container/10 text-on-surface">-0.06</td>
+</tr>
+<tr>
+<td class="p-1 text-left font-semibold text-on-surface">Absences</td>
+<td class="p-1.5 bg-surface-container text-on-surface-variant">-0.03</td>
+<td class="p-1.5 bg-surface-container text-on-surface-variant">-0.03</td>
+<td class="p-1.5 bg-surface-container text-on-surface-variant">0.03</td>
+<td class="p-1.5 bg-secondary-container/30 text-on-surface">0.06</td>
+<td class="p-1.5 bg-tertiary-container/10 text-on-surface">-0.06</td>
+<td class="p-1.5 bg-primary text-on-primary font-bold">1.00</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="mt-space-md pt-space-xs border-t border-outline-variant font-body-sm text-body-sm text-on-surface-variant">
+<p>
+<span class="text-tertiary font-semibold">Key Finding:</span> Severe collinearity between G1 and G2 (ρ=0.85) accounts for &gt;78% of G3 variance. When evaluating early-warning capability (excluding G1/G2), past failures becomes the dominant single predictor (ρ=-0.360).
+          </p>
+</div>
+</div>
+</div>
+<!-- Algorithm Comparison Benchmark Table (Substantial Prominence, Monograph Grade) -->
+<section class="bg-surface-container-lowest border border-outline-variant p-space-lg flex flex-col space-y-space-md">
+<div class="flex flex-col md:flex-row md:items-baseline justify-between gap-space-xs border-b border-outline-variant pb-space-sm">
+<div>
+<div class="flex items-center gap-space-xs text-secondary">
+<span class="font-label-sm text-label-sm uppercase tracking-wider">Classification Protocol Benchmark</span>
+<span class="text-outline-variant">·</span>
+<span class="font-label-sm text-label-sm text-primary font-semibold">Practicals 3 through 6 Synthesis</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-primary font-serif">Comprehensive Risk Classifier Comparison</h2>
+</div>
+<div class="flex items-center gap-space-sm">
+<div class="inline-flex border border-outline-variant font-label-sm text-label-sm">
+<button class="px-space-sm py-1 bg-primary text-on-primary font-semibold">Full Covariates (32)</button>
+<button class="px-space-sm py-1 bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors">A Priori Only (No G1/G2)</button>
+</div>
+<button class="px-space-sm py-1 bg-surface-container-lowest border border-outline text-primary font-label-sm text-label-sm font-semibold hover:bg-surface-container flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">download</span>
+            Export LaTeX
+          </button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full border-collapse text-left font-body-sm text-body-sm">
+<thead>
+<tr class="bg-surface-container text-on-surface border-b-2 border-primary font-label-sm text-label-sm uppercase tracking-wider">
+<th class="py-space-sm px-space-md">Algorithm Model</th>
+<th class="py-space-sm px-space-md">Family</th>
+<th class="py-space-sm px-space-md text-right font-mono">Accuracy</th>
+<th class="py-space-sm px-space-md text-right font-mono">Precision (Risk)</th>
+<th class="py-space-sm px-space-md text-right font-mono text-tertiary">Recall (Risk)</th>
+<th class="py-space-sm px-space-md text-right font-mono">F1-Score</th>
+<th class="py-space-sm px-space-md text-right font-mono">ROC-AUC</th>
+<th class="py-space-sm px-space-md text-right font-mono">10-Fold CV (Mean±σ)</th>
+<th class="py-space-sm px-space-md text-center">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant font-mono tabular-nums">
+<!-- Row 1: Logistic Regression -->
+<tr class="hover:bg-surface transition-colors">
+<td class="py-space-xs px-space-md font-title-md text-title-md text-on-surface font-sans">
+                Logistic Regression (L2 ElasticNet)
+              </td>
+<td class="py-space-xs px-space-md text-secondary font-sans">Generalized Linear</td>
+<td class="py-space-xs px-space-md text-right">82.3%</td>
+<td class="py-space-xs px-space-md text-right">0.742</td>
+<td class="py-space-xs px-space-md text-right text-tertiary">0.692</td>
+<td class="py-space-xs px-space-md text-right font-semibold">0.716</td>
+<td class="py-space-xs px-space-md text-right">0.864</td>
+<td class="py-space-xs px-space-md text-right text-secondary">81.5% ± 3.1</td>
+<td class="py-space-xs px-space-md text-center font-sans">
+<span class="inline-block px-1.5 py-0.5 border border-outline text-secondary text-label-sm">Baseline</span>
+</td>
+</tr>
+<!-- Row 2: KNN -->
+<tr class="hover:bg-surface transition-colors">
+<td class="py-space-xs px-space-md font-title-md text-title-md text-on-surface font-sans">
+                K-Nearest Neighbors (k=7, Minkowski)
+              </td>
+<td class="py-space-xs px-space-md text-secondary font-sans">Instance-Based</td>
+<td class="py-space-xs px-space-md text-right">77.2%</td>
+<td class="py-space-xs px-space-md text-right">0.680</td>
+<td class="py-space-xs px-space-md text-right text-tertiary">0.523</td>
+<td class="py-space-xs px-space-md text-right font-semibold">0.591</td>
+<td class="py-space-xs px-space-md text-right">0.781</td>
+<td class="py-space-xs px-space-md text-right text-secondary">76.4% ± 4.2</td>
+<td class="py-space-xs px-space-md text-center font-sans">
+<span class="inline-block px-1.5 py-0.5 border border-outline-variant text-outline text-label-sm">Sub-Optimal</span>
+</td>
+</tr>
+<!-- Row 3: Gaussian Naive Bayes -->
+<tr class="hover:bg-surface transition-colors">
+<td class="py-space-xs px-space-md font-title-md text-title-md text-on-surface font-sans">
+                Gaussian Naive Bayes (VarSmooth=1e-9)
+              </td>
+<td class="py-space-xs px-space-md text-secondary font-sans">Probabilistic</td>
+<td class="py-space-xs px-space-md text-right">73.4%</td>
+<td class="py-space-xs px-space-md text-right">0.568</td>
+<td class="py-space-xs px-space-md text-right text-tertiary">0.738</td>
+<td class="py-space-xs px-space-md text-right font-semibold">0.642</td>
+<td class="py-space-xs px-space-md text-right">0.812</td>
+<td class="py-space-xs px-space-md text-right text-secondary">72.8% ± 4.9</td>
+<td class="py-space-xs px-space-md text-center font-sans">
+<span class="inline-block px-1.5 py-0.5 border border-outline-variant text-outline text-label-sm">High False +</span>
+</td>
+</tr>
+<!-- Row 4: CART Decision Tree -->
+<tr class="hover:bg-surface transition-colors">
+<td class="py-space-xs px-space-md font-title-md text-title-md text-on-surface font-sans">
+                Decision Tree (CART, max_depth=4)
+              </td>
+<td class="py-space-xs px-space-md text-secondary font-sans">Partitioning Tree</td>
+<td class="py-space-xs px-space-md text-right">81.0%</td>
+<td class="py-space-xs px-space-md text-right">0.725</td>
+<td class="py-space-xs px-space-md text-right text-tertiary">0.669</td>
+<td class="py-space-xs px-space-md text-right font-semibold">0.696</td>
+<td class="py-space-xs px-space-md text-right">0.804</td>
+<td class="py-space-xs px-space-md text-right text-secondary">79.2% ± 3.8</td>
+<td class="py-space-xs px-space-md text-center font-sans">
+<span class="inline-block px-1.5 py-0.5 border border-secondary text-secondary text-label-sm">Interpretable</span>
+</td>
+</tr>
+<!-- Row 5: Bagging Classifier -->
+<tr class="hover:bg-surface transition-colors">
+<td class="py-space-xs px-space-md font-title-md text-title-md text-on-surface font-sans">
+                Bagging Ensemble (100 CART Estimators)
+              </td>
+<td class="py-space-xs px-space-md text-secondary font-sans">Bootstrap Aggregation</td>
+<td class="py-space-xs px-space-md text-right">83.5%</td>
+<td class="py-space-xs px-space-md text-right">0.761</td>
+<td class="py-space-xs px-space-md text-right text-tertiary">0.708</td>
+<td class="py-space-xs px-space-md text-right font-semibold">0.733</td>
+<td class="py-space-xs px-space-md text-right">0.878</td>
+<td class="py-space-xs px-space-md text-right text-secondary">82.4% ± 2.7</td>
+<td class="py-space-xs px-space-md text-center font-sans">
+<span class="inline-block px-1.5 py-0.5 border border-outline text-secondary text-label-sm">Standard</span>
+</td>
+</tr>
+<!-- Row 6: Standard Random Forest -->
+<tr class="hover:bg-surface transition-colors">
+<td class="py-space-xs px-space-md font-title-md text-title-md text-on-surface font-sans">
+                Standard Random Forest (n=200, sqrt)
+              </td>
+<td class="py-space-xs px-space-md text-secondary font-sans">Random Subspace</td>
+<td class="py-space-xs px-space-md text-right">84.1%</td>
+<td class="py-space-xs px-space-md text-right">0.800</td>
+<td class="py-space-xs px-space-md text-right text-tertiary">0.677</td>
+<td class="py-space-xs px-space-md text-right font-semibold">0.733</td>
+<td class="py-space-xs px-space-md text-right">0.891</td>
+<td class="py-space-xs px-space-md text-right text-secondary">82.8% ± 2.6</td>
+<td class="py-space-xs px-space-md text-center font-sans">
+<span class="inline-block px-1.5 py-0.5 border border-outline text-secondary text-label-sm">Unbalanced</span>
+</td>
+</tr>
+<!-- Row 7: Balanced Random Forest (Winner) -->
+<tr class="bg-primary-container/10 font-medium">
+<td class="py-space-sm px-space-md font-title-md text-title-md text-primary font-sans flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-primary inline-block"></span>
+<strong>Balanced Random Forest (Practical 6)</strong>
+</td>
+<td class="py-space-sm px-space-md text-primary font-sans">Cost-Sensitive Forest</td>
+<td class="py-space-sm px-space-md text-right font-bold text-primary">84.8%</td>
+<td class="py-space-sm px-space-md text-right font-bold text-primary">0.755</td>
+<td class="py-space-sm px-space-md text-right font-bold text-tertiary">0.815</td>
+<td class="py-space-sm px-space-md text-right font-bold text-primary">0.784</td>
+<td class="py-space-sm px-space-md text-right font-bold text-primary">0.908</td>
+<td class="py-space-sm px-space-md text-right font-bold text-primary">83.1% ± 2.4</td>
+<td class="py-space-sm px-space-md text-center font-sans">
+<span class="inline-block px-2 py-0.5 bg-primary text-on-primary text-label-sm font-semibold">Selected</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Critical Recall Explanation Callout -->
+<div class="pt-space-sm border-t border-outline-variant flex flex-col md:flex-row items-start md:items-center justify-between gap-space-md text-body-sm font-body-sm text-on-surface-variant">
+<div class="flex items-start gap-space-xs max-w-4xl">
+<span class="material-symbols-outlined text-primary text-[18px] shrink-0 mt-0.5">verified</span>
+<p>
+<strong class="text-on-surface">Recall Priority Rationale:</strong> In educational risk mitigation, false negatives (failing to identify an at-risk student) entail catastrophic institutional cost compared to false positives (scheduling a surplus mentoring session). The <em>Balanced Random Forest</em> boosts failure recall to <strong class="text-primary font-mono">0.815</strong> while retaining 84.8% cohort accuracy.
+          </p>
+</div>
+<div class="text-right shrink-0">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline block">Validation Standard</span>
+<span class="font-body-sm text-body-sm text-on-surface font-mono">Stratified 10-Fold CV (Seed: 42)</span>
+</div>
+</div>
+</section>
+<!-- Bottom Monograph Footnote / Methodological Context -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-gutter py-space-sm border-t border-outline-variant text-on-surface-variant font-body-sm text-body-sm">
+<div class="space-y-0.5">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-semibold">Data Standard &amp; Privacy</span>
+<p>Student records anonymized via Portuguese school administration identifiers. All 33 demographic, familial, and scholastic attributes preserved intact without synthetic imputation.</p>
+</div>
+<div class="space-y-0.5">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-semibold">Curriculum Horizon</span>
+<p>Targets end-of-year Mathematics exam (G3). Period 1 (G1) and Period 2 (G2) formative evaluations serve as intermediate benchmark checkpoints throughout the academic calendar.</p>
+</div>
+<div class="space-y-0.5">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-semibold">Institutional Deployment</span>
+<p>Currently configured for early-warning flagging at Week 6 of the academic term. Model predictions trigger academic tutor notifications when probability score exceeds 0.45.</p>
+</div>
+</section>
+</div>
+</div></main><footer class="w-full bg-surface-container border-t border-outline-variant mt-space-xl"><div class="max-w-[1440px] mx-auto px-margin py-space-xl"><div class="grid grid-cols-1 md:grid-cols-4 gap-gutter pb-space-lg border-b border-outline-variant"><div class="space-y-space-xs"><div class="font-headline-sm text-headline-sm text-primary font-serif">EduRisk AI Monograph</div><p class="font-body-sm text-body-sm text-on-surface-variant">Academic risk forecasting &amp; longitudinal demographic statistical framework for higher education institutions.</p></div><div class="space-y-space-xs"><div class="font-title-md text-title-md text-on-surface uppercase font-label-md text-label-md tracking-wider">Dataset Provenance</div><p class="font-body-sm text-body-sm text-on-surface-variant">Cortez and Silva, 2008. Using Data Mining to Predict Secondary School Student Performance. University of Minho, Portugal.</p><p class="font-label-sm text-label-sm text-secondary">student-mat.csv · Mathematics Course Cohort (N=395, 33 Attributes)</p></div><div class="space-y-space-xs"><div class="font-title-md text-title-md text-on-surface uppercase font-label-md text-label-md tracking-wider">7 Practical ML Modules</div><p class="font-body-sm text-body-sm text-on-surface-variant">Linear &amp; Ridge Regularization, Decision Trees, Random Forests, Gradient Boosted Trees, Support Vector Classifiers, Gaussian Naive Bayes, and K-Means Clustering.</p></div><div class="space-y-space-xs"><div class="font-title-md text-title-md text-on-surface uppercase font-label-md text-label-md tracking-wider">Pipeline Specifications</div><p class="font-body-sm text-body-sm text-on-surface-variant">Python 3.11 · Scikit-Learn 1.3 · Stratified K-Fold CV (k=5) · Synthetic Minority Oversampling (SMOTE) · SHAP Interpretability Protocol.</p></div></div><div class="pt-space-md flex flex-col md:flex-row items-center justify-between gap-space-sm text-on-surface-variant font-label-md text-label-md"><div class="flex items-center gap-space-md"><span>Institutional Research &amp; Educational Demography Division</span><span class="text-outline-variant">·</span><span>Peer-Review Reference: EDUR-ML-2024-V4</span></div><div><span>© 2024 EduRisk AI Research Collective. Open Access Academic License.</span></div></div></div></footer></body></html>
